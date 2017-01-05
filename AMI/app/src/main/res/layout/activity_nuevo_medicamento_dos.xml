@@ -6,28 +6,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <android.support.design.widget.TextInputLayout
         android:id="@+id/lbl_NombreMedicament"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:layout_marginRight="23dp"
-        android:layout_marginLeft="23dp">
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="70dp">
 
         <EditText
             android:id="@+id/txt_NombreMedicament"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="AUN ME FALTA ARREGLAR AHORITA VOY A ZZZZ" />
+            android:hint="Nombre del Medicamento" />
     </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_pill"
+        android:id="@+id/ic_pasti"
+        android:layout_marginStart="19dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="60dp" />
+
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/lbl_DiasDeMedicament"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="110dp"
-        android:layout_marginRight="23dp"
-        android:layout_marginLeft="23dp">
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="70dp">
 
         <EditText
             android:id="@+id/txt_DiasDeMedicament"
@@ -36,16 +47,25 @@
             android:contextClickable="false"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:hint="Dias de tratamiento" />
+            android:hint="Días de tratamiento" />
     </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_dias"
+        android:id="@+id/ic_dia"
+        android:layout_marginStart="19dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="130dp"/>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/lbl_dosis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="180dp"
-        android:layout_marginRight="23dp"
-        android:layout_marginLeft="23dp">
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="70dp">
 
         <EditText
             android:id="@+id/txt_dosis"
@@ -56,6 +76,15 @@
             android:focusableInTouchMode="false"
             android:hint="Dosis" />
     </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_dosis"
+        android:id="@+id/ic_dosis"
+        android:layout_marginStart="19dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="200dp"/>
 
     <!--
     <EditText
@@ -73,8 +102,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
-        android:layout_marginRight="23dp"
-        android:layout_marginLeft="23dp">
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="70dp">
 
         <EditText
             android:id="@+id/txt_indicaciones"
@@ -82,17 +111,28 @@
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:ems="5"
-            android:hint="Indicaciones" />
+            android:hint="Indicaciones Médicas" />
     </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_indicaciones"
+        android:id="@+id/ic_indicaciones"
+        android:layout_marginStart="19dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="270dp"/>
 
     <Button
         android:text="Siguiente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/btnSiguiente"
+        android:layout_below="@+id/lbl_indicaciones"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="19dp"
-        android:id="@+id/btnSiguiente" />
+        android:backgroundTint="@color/colorAccent"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="42dp" />
 
 
 </RelativeLayout>

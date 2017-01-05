@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -37,17 +38,28 @@ public class ActividadCrearAlarma extends AppCompatActivity {
     private Intent my_intent;
     final Calendar calendar= Calendar.getInstance();
 
-    //collapsin
+    //collapsing
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
-
+    Button btnGuardar ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_crear_alarma);
 
+        btnGuardar  =(Button)findViewById(R.id.btnCrearMedicamento);
+        btnGuardar .setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MisMedicamentosActivity.class);
+                startActivity(i);
+            }
+        });
+
         this.context=this;
         alarmManager=(AlarmManager) getSystemService(ALARM_SERVICE);
         my_intent = new Intent(this.context, Alarm_Receiver.class);
+
+
 
         editText_hora_inicial = (EditText) findViewById(R.id.txt_HoraInicial);
         editText_hora_inicial.setOnClickListener(new View.OnClickListener(){

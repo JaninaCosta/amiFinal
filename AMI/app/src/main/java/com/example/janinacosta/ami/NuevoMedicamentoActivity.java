@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
     DatabaseHelpher helpher;
     List<MedicamentoModel> dbList;
 
-    //collapsin
+    //collapsing
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
 
     @Override
@@ -44,7 +45,7 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //collapsin
+        //collapsing
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle("Medicamento");
         dynamicToolbarColor();
@@ -62,11 +63,13 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
 
 
         btnSiguiente  =(Button)findViewById(R.id.btnSiguiente);
-        /**************GUARDAR MEDICAMENTO ACCION EN BOTON DE SIANNA *********/
+
+
+        /**************GUARDAR MEDICAMENTO ACCION EN BOTON DE ALARMA *********/
         //Guarda los datos en la BDD
-        /*
-        btnSubmit  =(Button)findViewById(R.id.btnSubmit);
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
+
+
+        btnSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name = etName.getText().toString();
@@ -77,9 +80,12 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
 
                 if(name.equals("")){
                     Toast.makeText(NuevoMedicamentoActivity.this,"porfavor no dejar blanco",Toast.LENGTH_LONG).show();
+
                 }else {
                     helpher = new DatabaseHelpher(NuevoMedicamentoActivity.this);
                     helpher.insertIntoDB(name, num_dias, dosis, indicaciones);
+                    Intent i = new Intent(getApplicationContext(), ActividadCrearAlarma.class);
+                    startActivity(i);
                 }
                 etName.setText("");
                 etCantDias.setText("");
@@ -89,11 +95,13 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
                 Toast.makeText(NuevoMedicamentoActivity.this, "Medicamento insertado", Toast.LENGTH_LONG);
                 Log.v("Se guardo","");
 
+
+
             }
         });
-        */
 
 
+        /*
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,9 +109,9 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
                 startActivity(i);
             }
         });
+        */
 
-
-        //muestra numberPicker al dar click en el txt de Dias de tratamiento
+         //muestra numberPicker al dar click en el txt de Dias de tratamiento
 
         //Dias de tratamiento
         DiasDeTratamiento = (TextView)findViewById(R.id.txt_DiasDeMedicament);
@@ -209,16 +217,12 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
         });
     }
 
-
     private void toolbarTextAppernce() {
         collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.collapsedappbar);
         collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.expandedappbar);
     }
 
-
     //boton regresar
-
-
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_nuevo_medicamento, menu);
