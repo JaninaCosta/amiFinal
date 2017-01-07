@@ -19,7 +19,8 @@
             android:id="@+id/txt_NombreMedicament"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre del Medicamento" />
+            android:hint="Nombre del Medicamento"
+            android:textSize="20sp" />
     </android.support.design.widget.TextInputLayout>
 
     <ImageView
@@ -47,7 +48,8 @@
             android:contextClickable="false"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:hint="Días de tratamiento" />
+            android:hint="Días de tratamiento"
+            android:textSize="20sp" />
     </android.support.design.widget.TextInputLayout>
 
     <ImageView
@@ -74,7 +76,8 @@
             android:contextClickable="false"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:hint="Dosis" />
+            android:hint="Dosis"
+            android:textSize="20sp" />
     </android.support.design.widget.TextInputLayout>
 
     <ImageView
@@ -111,7 +114,8 @@
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:ems="5"
-            android:hint="Indicaciones Médicas" />
+            android:hint="Indicaciones Médicas"
+            android:textSize="20sp" />
     </android.support.design.widget.TextInputLayout>
 
     <ImageView
@@ -132,7 +136,8 @@
         android:layout_centerHorizontal="true"
         android:backgroundTint="@color/colorAccent"
         android:textColor="@android:color/white"
-        android:layout_marginTop="42dp" />
+        android:layout_marginTop="42dp"
+        android:textSize="16sp" />
 
 
 </RelativeLayout>

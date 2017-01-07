@@ -40,12 +40,15 @@ public class ActividadCrearAlarma extends AppCompatActivity {
 
     //collapsing
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
-    Button btnGuardar ;
+    //Button btnGuardar ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_crear_alarma);
 
+
+        //metodo para pasar de crear alarma a la lista de medicamentos
+        /*
         btnGuardar  =(Button)findViewById(R.id.btnCrearMedicamento);
         btnGuardar .setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,13 +56,11 @@ public class ActividadCrearAlarma extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(), MisMedicamentosActivity.class);
                 startActivity(i);
             }
-        });
+        });*/
 
         this.context=this;
         alarmManager=(AlarmManager) getSystemService(ALARM_SERVICE);
         my_intent = new Intent(this.context, Alarm_Receiver.class);
-
-
 
         editText_hora_inicial = (EditText) findViewById(R.id.txt_HoraInicial);
         editText_hora_inicial.setOnClickListener(new View.OnClickListener(){
