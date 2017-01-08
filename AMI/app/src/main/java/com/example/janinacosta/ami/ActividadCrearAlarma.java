@@ -13,6 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
+import android.text.Layout;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,9 +24,11 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class ActividadCrearAlarma extends AppCompatActivity {
     private EditText editText_hora_inicial, editText_frecuencia;
@@ -38,25 +43,55 @@ public class ActividadCrearAlarma extends AppCompatActivity {
     private Intent my_intent;
     final Calendar calendar= Calendar.getInstance();
 
+
     //collapsing
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
-    //Button btnGuardar ;
+
+    //Boton Guaradar
+    Button btnGuardar ;
+
+    //helper
+    DatabaseHelpher helpher;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_actividad_crear_alarma);
+        setContentView(R.layout.activity_crear_alarma);
 
+        //****RECIBIR DATOs DE ACTIVITY NUEVO MEDICAMENTO
+        // 1. get passed intent
+        Intent intent = getIntent();
+
+        // 2. get message value from intent
+        final MedicamentoModel medicamento_new = (MedicamentoModel)intent.getSerializableExtra("medicamento");
+
+        // 4. get bundle from intent
+        Bundle bundle = intent.getExtras();
+
+        // 5. get status value from bundle
+        String status = bundle.getString("status");
+
+        // 6. show status on Toast
+        Toast toast =Toast.makeText(this, status, Toast.LENGTH_LONG);
+        toast.show();
+
+        /// FIN RECIBIR DATOS
 
         //metodo para pasar de crear alarma a la lista de medicamentos
-        /*
+
         btnGuardar  =(Button)findViewById(R.id.btnCrearMedicamento);
         btnGuardar .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                helpher = new DatabaseHelpher(ActividadCrearAlarma.this);
+                helpher.insertIntoDB(medicamento_new.getName(), medicamento_new.getNum_dias(),medicamento_new.getDosis(),medicamento_new.getIndicaciones());
+
+                //Toast.makeText(ActividadCrearAlarma.this, medicamento_new.getName()+" creado con éxito", Toast.LENGTH_LONG).show();
+
                 Intent i = new Intent(getApplicationContext(), MisMedicamentosActivity.class);
                 startActivity(i);
             }
-        });*/
+        });
 
         this.context=this;
         alarmManager=(AlarmManager) getSystemService(ALARM_SERVICE);

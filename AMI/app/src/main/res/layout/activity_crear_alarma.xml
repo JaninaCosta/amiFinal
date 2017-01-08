@@ -51,7 +51,7 @@
             android:paddingTop="10dp"
             android:weightSum="1"
             android:layout_height="500dp">
-            <include layout="@layout/modificado_activity_crear_alarma_dos" />
+            <include layout="@layout/activity_crear_alarma_dos" />
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

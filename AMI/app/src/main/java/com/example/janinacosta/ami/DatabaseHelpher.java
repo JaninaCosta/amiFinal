@@ -49,7 +49,7 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
 
         db.insert(MEDICAMENTOS_TABLE, null, values);
         db.close();
-        Toast.makeText(context, "Medicament Creado", Toast.LENGTH_LONG);
+        Toast.makeText(context, nombre+" creado con éxito", Toast.LENGTH_LONG);
 
     }
     /* Obtener todos los medicamentos de la base para el recycler */
@@ -61,11 +61,11 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
         if (cursor.moveToFirst()){
             do {
-                MedicamentoModel model = new MedicamentoModel();
-                model.setName(cursor.getString(0));
-                model.setNum_dias(cursor.getInt(1));
-                model.setDosis(cursor.getInt(2));
-                model.setIndicaciones(cursor.getString(3));
+                MedicamentoModel model = new MedicamentoModel(cursor.getString(0),cursor.getInt(1),cursor.getInt(2),cursor.getString(3),"");
+                //model.setName(cursor.getString(0));
+                //model.setNum_dias(cursor.getInt(1));
+                //model.setDosis(cursor.getInt(2));
+                //model.setIndicaciones(cursor.getString(3));
 
                 modelList.add(model);
             }while (cursor.moveToNext());

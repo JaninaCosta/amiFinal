@@ -30,7 +30,7 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
     EditText etName,etDosis, etIndicaciones, etCantDias;
     Button btnSiguiente;
     private TextView DiasDeTratamiento, Dosis;
-    DatabaseHelpher helpher;
+
     List<MedicamentoModel> dbList;
 
     //collapsing
@@ -52,6 +52,8 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
         toolbarTextAppernce();
         //fin collapsin
 
+        etName = (EditText)findViewById(R.id.txt_NombreMedicament);
+
 
         dbList= new ArrayList<MedicamentoModel>();
 
@@ -72,28 +74,34 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = etName.getText().toString();
-                int num_dias = Integer.parseInt(etCantDias.getText().toString());
-                int dosis = Integer.parseInt(etDosis.getText().toString());
-                String indicaciones = etIndicaciones.getText().toString();
-                //String frecuencia=etFrecuencia.getText().toString();
 
-                if(name.equals("")){
-                    Toast.makeText(NuevoMedicamentoActivity.this,"porfavor no dejar blanco",Toast.LENGTH_LONG).show();
-
+                if(etName.getText().toString().equals("")|| etCantDias.getText().toString().equals("")||etDosis.getText().toString().equals("") || etIndicaciones.getText().toString().equals("")){
+                        Toast.makeText(NuevoMedicamentoActivity.this,"Llene todos los campos",Toast.LENGTH_LONG).show();
                 }else {
-                    helpher = new DatabaseHelpher(NuevoMedicamentoActivity.this);
-                    helpher.insertIntoDB(name, num_dias, dosis, indicaciones);
-                    Intent i = new Intent(getApplicationContext(), ActividadCrearAlarma.class);
-                    startActivity(i);
+                    String name = etName.getText().toString();
+                    int num_dias = Integer.parseInt(etCantDias.getText().toString());
+                    int dosis = Integer.parseInt(etDosis.getText().toString());
+                    String indicaciones = etIndicaciones.getText().toString();
+                    //String frecuencia=etFrecuencia.getText().toString();
+
+                    MedicamentoModel medicamento_new= new MedicamentoModel(name,num_dias,dosis,indicaciones,"");
+
+                    // 1. create an intent pass class name or intnet action name
+                    Intent intent = new Intent(getApplicationContext(), ActividadCrearAlarma.class);
+
+                    // 2. put key/value data
+                    intent.putExtra("medicamento", medicamento_new);
+
+                    // 3. or you can add data to a bundle
+                    Bundle extras = new Bundle();
+                    extras.putString("status", "Datos correctos");
+
+                    // 4. add bundle to intent
+                    intent.putExtras(extras);
+
+                    // 5. start the activity
+                    startActivity(intent);
                 }
-                etName.setText("");
-                etCantDias.setText("");
-                etDosis.setText("");
-                etIndicaciones.setText("");
-                //etFrecuencia.setText("");
-                Toast.makeText(NuevoMedicamentoActivity.this, "Medicamento insertado", Toast.LENGTH_LONG);
-                Log.v("Se guardo","");
 
 
 
@@ -133,6 +141,8 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
 
 
     }
+
+
 
 
     /*Dialogo de Dias de Tratamiento*/
