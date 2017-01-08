@@ -47,16 +47,6 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_edit"
-            android:background="#FAFAFA"
-            android:layout_marginRight="19dp"
-            android:id="@+id/ic_edit"
-            android:layout_alignBottom="@+id/rvname"
-            android:layout_toStartOf="@+id/ic_delete" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:src="@drawable/ic_delete"
             android:background="#FAFAFA"
             android:layout_marginRight="13dp"
