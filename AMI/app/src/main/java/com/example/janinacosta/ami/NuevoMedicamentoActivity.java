@@ -76,7 +76,7 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
             public void onClick(View v) {
 
                 if(etName.getText().toString().equals("")|| etCantDias.getText().toString().equals("")||etDosis.getText().toString().equals("") || etIndicaciones.getText().toString().equals("")){
-                        Toast.makeText(NuevoMedicamentoActivity.this,"Llene todos los campos",Toast.LENGTH_LONG).show();
+                        Toast.makeText(NuevoMedicamentoActivity.this,"Por favor, llene todos los campos",Toast.LENGTH_LONG).show();
                 }else {
                     String name = etName.getText().toString();
                     int num_dias = Integer.parseInt(etCantDias.getText().toString());
