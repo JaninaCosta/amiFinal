@@ -86,7 +86,7 @@ public class ActividadCrearAlarma extends AppCompatActivity {
                 helpher = new DatabaseHelpher(ActividadCrearAlarma.this);
                 helpher.insertIntoDB(medicamento_new.getName(), medicamento_new.getNum_dias(),medicamento_new.getDosis(),medicamento_new.getIndicaciones());
 
-                //Toast.makeText(ActividadCrearAlarma.this, medicamento_new.getName()+" creado con éxito", Toast.LENGTH_LONG).show();
+                Toast.makeText(ActividadCrearAlarma.this, medicamento_new.getName()+" agregado a 'Mis Medicamentos'", Toast.LENGTH_LONG).show();
 
                 Intent i = new Intent(getApplicationContext(), MisMedicamentosActivity.class);
                 startActivity(i);
