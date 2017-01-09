@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="550dp">
 
         <!--name-->
 
@@ -21,7 +21,7 @@
             android:text="Días del tratamiento"
             android:layout_marginLeft="80dp"
             android:layout_marginRight="20dp"
-            android:textSize="21sp"
+            android:textSize="23sp"
             android:layout_marginTop="45dp"
             android:textColor="#424242"
             android:layout_marginEnd="21dp" />
@@ -32,7 +32,7 @@
             android:text="Días del tratamiento"
             android:layout_marginLeft="80dp"
             android:layout_marginRight="20dp"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:layout_marginTop="80dp"    />
 
         <ImageView
@@ -53,7 +53,7 @@
             android:text="Dosis del Medicamento"
             android:layout_marginLeft="80dp"
             android:layout_marginRight="20dp"
-            android:textSize="21sp"
+            android:textSize="23sp"
             android:textColor="#424242"
             android:layout_marginTop="150dp"
             android:layout_marginEnd="21dp" />
@@ -65,7 +65,7 @@
             android:text="Dosis del Medicamento"
             android:layout_marginLeft="80dp"
             android:layout_marginRight="20dp"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:layout_marginTop="185dp"
             android:layout_marginEnd="21dp" />
 
@@ -77,6 +77,41 @@
             android:layout_marginStart="19dp"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="165dp" />
+        <!--frecuencia-->
+
+        <TextView
+            android:id="@+id/lblFrecuencia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Frecuencia"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="20dp"
+            android:textSize="23sp"
+            android:textColor="#424242"
+            android:layout_marginTop="255dp"
+
+            android:layout_marginEnd="21dp" />
+        <TextView
+            android:id="@+id/frecuencia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Frecuencia"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="20dp"
+            android:textSize="22sp"
+            android:textColor="#616161"
+            android:layout_marginTop="290dp"
+            android:layout_marginEnd="21dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_frecuencias"
+            android:id="@+id/ic_frecuencia"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="270dp"
+            android:layout_marginLeft="25dp"
+            />
 
         <!--indicaciones-->
 
@@ -87,10 +122,10 @@
             android:text="Indicaciones Médicas"
             android:layout_marginLeft="80dp"
             android:layout_marginRight="20dp"
-            android:textSize="21sp"
+            android:textSize="23sp"
             android:textColor="#424242"
-            android:layout_marginTop="255dp"
-            android:layout_marginEnd="21dp" />
+            android:layout_marginTop="360dp"
+             />
 
         <TextView
             android:id="@+id/indicaciones"
@@ -99,8 +134,9 @@
             android:text="Indicaciones Médicas"
             android:layout_marginLeft="80dp"
             android:layout_marginRight="20dp"
-            android:textSize="18sp"
-            android:layout_marginTop="290dp" />
+            android:textSize="22sp"
+            android:layout_marginTop="395dp"
+             />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -109,41 +145,10 @@
             android:id="@+id/ic_indicaciones"
             android:layout_marginStart="19dp"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="270dp" />
 
-        <!--frecuencia-->
-
-        <TextView
-            android:id="@+id/lblFrecuencia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Frecuencia"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="20dp"
-            android:textSize="21sp"
-            android:textColor="#424242"
-            android:layout_marginTop="360dp"
-            android:layout_marginEnd="21dp" />
-        <TextView
-            android:id="@+id/frecuencia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Frecuencia"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="20dp"
-            android:textSize="18sp"
-            android:textColor="#616161"
-            android:layout_marginTop="395dp"
-            android:layout_marginEnd="21dp" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_frecuencias"
-            android:id="@+id/ic_frecuencia"
-            android:layout_marginStart="19dp"
-            android:layout_marginLeft="25dp"
             android:layout_marginTop="375dp" />
+
+
 
         <TextView
             android:id="@+id/name"
@@ -162,14 +167,19 @@
             android:layout_alignParentEnd="true"
             android:id="@+id/button3" />-->
 
+
         <Button
             android:text="Guardar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button4"
-            android:layout_below="@+id/frecuencia"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp" />
+            android:layout_width="150dp"
+            android:id="@+id/btnGuardar"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@android:color/white"
+            android:textSize="23sp"
+            android:fontFamily="sans-serif"
+            android:textAllCaps="false"
+            android:layout_height="75dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
 
 
     </RelativeLayout>

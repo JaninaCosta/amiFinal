@@ -1,9 +1,11 @@
 package com.example.janinacosta.ami;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +24,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 /**
  * Created by Janina Costa on 3/1/2017.
  */
@@ -35,6 +39,8 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
 
     //collapsing
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +116,8 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
         });
 
 
+
+
         /*
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,7 +150,6 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
 
 
     }
-
 
 
 
