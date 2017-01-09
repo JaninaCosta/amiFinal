@@ -42,8 +42,10 @@ public class MisMedicamentosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_medicamentos);
         //toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.icono_atras_02_01);
+
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         helpher = new DatabaseHelpher(this);
         dbList = new ArrayList<MedicamentoModel>();

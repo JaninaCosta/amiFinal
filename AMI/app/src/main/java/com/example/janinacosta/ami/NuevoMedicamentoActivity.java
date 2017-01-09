@@ -42,8 +42,9 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
         setContentView(R.layout.activity_nuevo_medicamento_uno);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.icono_atras_02_01);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //collapsing
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);

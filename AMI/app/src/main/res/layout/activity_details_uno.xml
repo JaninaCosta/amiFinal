@@ -55,4 +55,14 @@
 
     </android.support.v4.widget.NestedScrollView>
 
+    <ImageButton
+        android:id="@+id/fab"
+        style="@style/FloatingActionButton"
+        android:src="@drawable/icono_modificar_01"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="255dp"
+        android:contentDescription="@null" />
+
 </android.support.design.widget.CoordinatorLayout>

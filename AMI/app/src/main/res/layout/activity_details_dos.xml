@@ -154,13 +154,13 @@
             android:textColor="#ffffff"
             android:layout_marginBottom="55dp" />
 
-        <Button
+        <!--<Button
             android:text="modificar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/button3" />
+            android:id="@+id/button3" />-->
 
         <Button
             android:text="Guardar"

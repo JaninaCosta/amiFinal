@@ -1,15 +1,20 @@
 package com.example.janinacosta.ami;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +33,7 @@ public class DetailsActivity extends AppCompatActivity {
     TextView tvname,tvdosis, tvnumdias, tvindicaciones, tvfrecuencia;
     String nombreMed;
 
+
     //collapsing
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
 
@@ -39,8 +45,9 @@ public class DetailsActivity extends AppCompatActivity {
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.icono_atras_02_01);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -81,6 +88,8 @@ public class DetailsActivity extends AppCompatActivity {
         //fin collapsin
 
         Toast.makeText(DetailsActivity.this, dbList.toString(), Toast.LENGTH_LONG);
+
+
     }
 
     //metodos para collapsing
