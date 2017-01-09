@@ -60,8 +60,6 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
         //fin collapsin
 
         etName = (EditText)findViewById(R.id.txt_NombreMedicament);
-
-
         dbList= new ArrayList<MedicamentoModel>();
 
         etName = (EditText)findViewById(R.id.txt_NombreMedicament);
@@ -128,91 +126,7 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
         });
         */
 
-         //muestra numberPicker al dar click en el txt de Dias de tratamiento
 
-        //Dias de tratamiento
-        DiasDeTratamiento = (TextView)findViewById(R.id.txt_DiasDeMedicament);
-        DiasDeTratamiento.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDialogoDias();
-            }
-        });
-
-        //dosis
-        Dosis = (TextView)findViewById(R.id.txt_dosis);
-        Dosis.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDialogoDosis();
-            }
-        });
-
-
-    }
-
-
-
-    /*Dialogo de Dias de Tratamiento*/
-    public void showDialogoDias()
-    {
-        final Dialog d = new Dialog(NuevoMedicamentoActivity.this);
-        d.setTitle("Dias de Tratamiento");
-        d.setContentView(R.layout.dialogo_number_picker);
-        Button cancelDialogo = (Button) d.findViewById(R.id.button1);
-        Button okDialogo = (Button) d.findViewById(R.id.button2);
-        final NumberPicker np = (NumberPicker) d.findViewById(R.id.picker);
-        np.setMaxValue(30); // max value 100
-        np.setMinValue(1);   // min value 0
-        np.setWrapSelectorWheel(false);
-        np.setOnValueChangedListener(this);
-
-        cancelDialogo.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                DiasDeTratamiento.setText(String.valueOf(np.getValue())); //set the value to textview
-                d.dismiss();
-            }
-        });
-
-        okDialogo.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) { d.dismiss(); }
-        });
-        d.show();
-
-    }
-    /*Dialogo de Dosis*/
-    public void showDialogoDosis()
-    {
-        final Dialog d = new Dialog(NuevoMedicamentoActivity.this);
-        d.setTitle("Dosis");
-        d.setContentView(R.layout.dialogo_number_picker);
-        Button cancelDialogo = (Button) d.findViewById(R.id.button1);
-        Button okDialogo = (Button) d.findViewById(R.id.button2);
-        final NumberPicker np = (NumberPicker) d.findViewById(R.id.picker);
-        np.setMaxValue(10); // max value 100
-        np.setMinValue(1);   // min value 0
-        np.setWrapSelectorWheel(false);
-        np.setOnValueChangedListener(this);
-
-        cancelDialogo.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                Dosis.setText(String.valueOf(np.getValue())); //set the value to textview
-                d.dismiss();
-            }
-        });
-
-        okDialogo.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) { d.dismiss(); }
-        });
-        d.show();
 
     }
 

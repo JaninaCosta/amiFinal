@@ -107,13 +107,14 @@ public class ActividadCrearAlarma extends AppCompatActivity {
         });
 
         editText_frecuencia = (EditText) findViewById(R.id.txt_frecuencia);
-        editText_frecuencia.setOnClickListener(new View.OnClickListener(){
+
+        /*editText_frecuencia.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 frecuenciaPickerDialog();
             }
 
-        });
+        });*/
 
         //collapsin
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

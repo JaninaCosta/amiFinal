@@ -34,7 +34,7 @@
         android:layout_weight="1"/>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/lbl_Alarma"
+        android:id="@+id/lbl_frecuencia"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="110dp"
@@ -46,8 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contextClickable="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
+            android:inputType="number"
             android:hint="Frecuencia"
             android:textSize="23sp" />
     </android.support.design.widget.TextInputLayout>
@@ -101,7 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/ic_dia"
-        android:layout_toEndOf="@+id/lbl_Alarma"
+        android:layout_toEndOf="@+id/lbl_frecuencia"
         android:id="@+id/textView4"
         android:textSize="21sp" />
 
