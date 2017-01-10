@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,12 +59,29 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView name,dosis, frecuencia;
+        Button eliminar;
+        DatabaseHelpher helpher;
 
         public ViewHolder(View itemLayoutView) {
             super(itemLayoutView);
             name = (TextView) itemLayoutView .findViewById(R.id.rvname);
+            eliminar= (Button)itemLayoutView .findViewById(R.id.btnEliminar);
             //frecuencia = (TextView) itemLayoutView .findViewById(R.id.rvfrecuencia);
             itemLayoutView.setOnClickListener(this);
+
+            eliminar.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View view) {
+
+                    //getAdapterPosition() para obtener la posición del card en el recycler
+                    int position = getAdapterPosition();
+                    String identificarNombre = dbList.get(position).getName();
+                    //para eliminar un medicamento
+                    //helpher.deleteARow(identificarNombre);
+                    Toast.makeText(RecyclerAdapter.context, "Ha eliminado el medicamento " +  identificarNombre, Toast.LENGTH_LONG).show();
+                }
+            });
 
         }
 

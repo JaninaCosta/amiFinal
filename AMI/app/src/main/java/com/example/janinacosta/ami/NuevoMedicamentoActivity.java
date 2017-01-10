@@ -24,7 +24,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 
 /**
  * Created by Janina Costa on 3/1/2017.
@@ -39,7 +39,6 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
 
     //collapsing
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
-
 
 
     @Override

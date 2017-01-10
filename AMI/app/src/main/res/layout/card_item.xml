@@ -27,7 +27,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_alignBottom="@+id/ic_delete" />
+            android:layout_alignBottom="@+id/btnEliminar" />
 
         <TextView
             android:id="@+id/rvfrecuencia"
@@ -39,21 +39,21 @@
             android:textColor="?android:attr/editTextColor"
             android:layout_height="55dp"
             android:textSize="18sp"
-            android:layout_alignTop="@+id/ic_delete"
+            android:layout_alignTop="@+id/btnEliminar"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="16dp" />
 
-        <ImageButton
+        <Button
+            android:text="Eliminar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_delete"
-            android:background="#FAFAFA"
-            android:layout_marginRight="13dp"
-            android:layout_marginEnd="16dp"
-            android:id="@+id/ic_delete"
             android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="12dp"
+            android:id="@+id/btnEliminar"
+            android:textColor="#424242"
+            />
 
     </RelativeLayout>
 
