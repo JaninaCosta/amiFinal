@@ -25,13 +25,14 @@
             android:layout_marginTop="45dp"
             android:textColor="#424242"
             android:layout_marginEnd="21dp" />
-        <TextView
+        <EditText
             android:id="@+id/diasMedicamento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Días del tratamiento"
             android:layout_marginLeft="80dp"
             android:layout_marginRight="20dp"
+            android:inputType="number"
             android:textSize="22sp"
             android:layout_marginTop="80dp"    />
 
@@ -58,13 +59,14 @@
             android:layout_marginTop="150dp"
             android:layout_marginEnd="21dp" />
 
-        <TextView
+        <EditText
             android:id="@+id/dosis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Dosis del Medicamento"
             android:layout_marginLeft="80dp"
             android:layout_marginRight="20dp"
+            android:inputType="number"
             android:textSize="22sp"
             android:layout_marginTop="185dp"
             android:layout_marginEnd="21dp" />
@@ -89,15 +91,15 @@
             android:textSize="23sp"
             android:textColor="#424242"
             android:layout_marginTop="255dp"
-
             android:layout_marginEnd="21dp" />
-        <TextView
+        <EditText
             android:id="@+id/frecuencia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Frecuencia"
+            android:text="0"
             android:layout_marginLeft="80dp"
             android:layout_marginRight="20dp"
+            android:inputType="number"
             android:textSize="22sp"
             android:textColor="#616161"
             android:layout_marginTop="290dp"
@@ -127,7 +129,7 @@
             android:layout_marginTop="360dp"
              />
 
-        <TextView
+        <EditText
             android:id="@+id/indicaciones"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

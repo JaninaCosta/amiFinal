@@ -56,7 +56,7 @@
     </android.support.v4.widget.NestedScrollView>
 
     <ImageButton
-        android:id="@+id/fab"
+        android:id="@+id/btnModificar"
         style="@style/FloatingActionButton"
         android:src="@drawable/icono_modificar_01"
         android:layout_alignParentTop="true"

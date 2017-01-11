@@ -15,6 +15,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +34,7 @@ public class DetailsActivity extends AppCompatActivity {
     int position;
     TextView tvname,tvdosis, tvnumdias, tvindicaciones, tvfrecuencia;
     String nombreMed;
+    ImageButton modificar;
 
 
     //collapsing
@@ -55,10 +58,26 @@ public class DetailsActivity extends AppCompatActivity {
         position = bundle.getInt("position");
 
         tvname =(TextView)findViewById(R.id.name);
-        tvnumdias =(TextView)findViewById(R.id.diasMedicamento);
-        tvdosis =(TextView)findViewById(R.id.dosis);
-        tvindicaciones =(TextView)findViewById(R.id.indicaciones);
-        //tvfrecuencia =(TextView)findViewById(R.id.frecuencia);
+        tvnumdias =(EditText) findViewById(R.id.diasMedicamento);
+        tvdosis =(EditText) findViewById(R.id.dosis);
+        tvindicaciones =(EditText) findViewById(R.id.indicaciones);
+        tvfrecuencia =(EditText)findViewById(R.id.frecuencia);
+
+        //modificar
+        tvnumdias.setFocusable(false);
+        tvdosis.setFocusable(false);
+        tvindicaciones.setFocusable(false);
+        tvfrecuencia.setFocusable(false);
+
+        modificar = (ImageButton) findViewById(R.id.btnModificar);
+        modificar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tvnumdias.setFocusableInTouchMode(true);
+                tvdosis.setFocusableInTouchMode(true);
+                tvindicaciones.setFocusableInTouchMode(true);
+            }
+        });
 
         helpher = new DatabaseHelpher(this);
         dbList= new ArrayList<MedicamentoModel>();
