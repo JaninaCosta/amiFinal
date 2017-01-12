@@ -92,7 +92,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             extras.putInt("position",getAdapterPosition());
             intent.putExtras(extras);
             context.startActivity(intent);
-            Toast.makeText(RecyclerAdapter.context, "click " + getAdapterPosition(), Toast.LENGTH_LONG).show();
+            //Toast.makeText(RecyclerAdapter.context, "click " + getAdapterPosition(), Toast.LENGTH_LONG).show();
+            Toast.makeText(RecyclerAdapter.context, "El botón modificar le permite realizar cambios", Toast.LENGTH_LONG).show();
         }
     }
 

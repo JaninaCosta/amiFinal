@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ public class DetailsActivity extends AppCompatActivity {
     TextView tvname,tvdosis, tvnumdias, tvindicaciones, tvfrecuencia;
     String nombreMed;
     ImageButton modificar;
+    Button guardarCambios;
 
 
     //collapsing
@@ -76,8 +78,23 @@ public class DetailsActivity extends AppCompatActivity {
                 tvnumdias.setFocusableInTouchMode(true);
                 tvdosis.setFocusableInTouchMode(true);
                 tvindicaciones.setFocusableInTouchMode(true);
+                guardarCambios.setVisibility(View.VISIBLE);
+                collapsingToolbarLayout.setFocusableInTouchMode(true);
             }
         });
+
+        //Guardar cambios al modificar
+        guardarCambios=(Button)findViewById(R.id.btnGuardar);
+        guardarCambios.setVisibility(View.INVISIBLE);
+        guardarCambios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(DetailsActivity.this,"Los datos fueron modificados correctamente",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(DetailsActivity.this, MisMedicamentosActivity.class));
+
+            }
+        });
+
 
         helpher = new DatabaseHelpher(this);
         dbList= new ArrayList<MedicamentoModel>();
@@ -102,6 +119,7 @@ public class DetailsActivity extends AppCompatActivity {
         //collapsin
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(nombreMed);
+
         dynamicToolbarColor();
         toolbarTextAppernce();
         //fin collapsin
