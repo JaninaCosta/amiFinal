@@ -25,17 +25,16 @@ public class Alarma extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alarma);
+        setContentView(R.layout.activity_apagar_alarma);
 
         this.context=this;
-
+        final Intent my_intent = new Intent(this.context, Alarm_Receiver.class);
+        updateText = (TextView) findViewById(R.id.update_text);
+        /*
         alarmManager=(AlarmManager) getSystemService(ALARM_SERVICE);
         alarmTimePicker=(TimePicker) findViewById(R.id.timePicker);
-        updateText = (TextView) findViewById(R.id.update_text);
 
         final Calendar calendar = Calendar.getInstance();
-
-        final Intent my_intent = new Intent(this.context, Alarm_Receiver.class);
 
         Button alarm_on = (Button) findViewById(R.id.alarm_on);
         alarm_on.setOnClickListener(new View.OnClickListener() {
@@ -74,14 +73,14 @@ public class Alarma extends AppCompatActivity {
                 //set the alarm manager
                 alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pending_intent);
             }
-        });
+        });*/
 
         Button alarm_off = (Button) findViewById(R.id.alarm_off);
         alarm_off.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                set_alarm_text("Alarm off!");
+                set_alarm_text("La Alarma fue apagada!");
 
                 alarmManager.cancel(pending_intent);
 

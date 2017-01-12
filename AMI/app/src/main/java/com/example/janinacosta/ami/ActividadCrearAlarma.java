@@ -108,13 +108,14 @@ public class ActividadCrearAlarma extends AppCompatActivity {
 
         editText_frecuencia = (EditText) findViewById(R.id.txt_frecuencia);
 
-        /*editText_frecuencia.setOnClickListener(new View.OnClickListener(){
+        editText_frecuencia.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                frecuenciaPickerDialog();
+                //frecuenciaPickerDialog();
+                action_frecuencia();
             }
 
-        });*/
+        });
 
         //collapsin
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -206,6 +207,35 @@ public class ActividadCrearAlarma extends AppCompatActivity {
             }
         });*/
         picker_dialog_horaInicial.show();
+    }
+
+    private void action_frecuencia (){
+        frecuencia_horas = Integer.valueOf(editText_frecuencia.getText().toString());
+        String horas= "";
+
+        TextView textView_listaHoras = (TextView) findViewById(R.id.txt_lista_horas);
+
+        ArrayList<String> listaHoras= new ArrayList<String>();
+
+
+
+        for(int i=hora; i<24;i=(i+frecuencia_horas)){
+            horas = horas + ", "+i+":"+minutos;
+
+            calendar.set(Calendar.HOUR_OF_DAY, i);
+            calendar.set(Calendar.MINUTE, minutos);
+
+            //
+            my_intent.putExtra("extra", "alarm on");
+
+            //create a pending intent
+            pending_intent = PendingIntent.getBroadcast(ActividadCrearAlarma.this, 0,
+                    my_intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+            //set the alarm manager
+            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pending_intent);
+        }
+        textView_listaHoras.setText("Listas: "+horas);
     }
 
     private void frecuenciaPickerDialog(){
