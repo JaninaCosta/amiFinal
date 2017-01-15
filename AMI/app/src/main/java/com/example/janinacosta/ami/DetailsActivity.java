@@ -1,10 +1,14 @@
 package com.example.janinacosta.ami;
 
+import android.animation.Animator;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -12,11 +16,18 @@ import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,8 +44,11 @@ public class DetailsActivity extends AppCompatActivity {
     List<MedicamentoModel> dbList;
     int position;
     TextView tvname,tvdosis, tvnumdias, tvindicaciones, tvfrecuencia;
+    RelativeLayout contenedorNombre;
     String nombreMed;
-    ImageButton modificar;
+    Button modificar, guardarCambios;
+    Handler h;
+    final String NOMBRE_BASEDATOS = "mediAlarmas.db";
 
 
     //collapsing
@@ -45,40 +59,87 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_details_uno);
-
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.icono_atras_02_01);
         setSupportActionBar(toolbar);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-
         position = bundle.getInt("position");
 
-        tvname =(TextView)findViewById(R.id.name);
+        //tvname =(TextView)findViewById(R.id.name);
+        tvname = (EditText)findViewById(R.id.txtnameEdit);
         tvnumdias =(EditText) findViewById(R.id.diasMedicamento);
         tvdosis =(EditText) findViewById(R.id.dosis);
         tvindicaciones =(EditText) findViewById(R.id.indicaciones);
         tvfrecuencia =(EditText)findViewById(R.id.frecuencia);
+        modificar = (Button) findViewById(R.id.btnModificar);
+        contenedorNombre = (RelativeLayout) findViewById(R.id.layout_nombre);
+
+        //hilos
+        h = new Handler();
+        h.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startFlash();
+            }
+
+        },1000);
+        //fin hilos
 
         //modificar
         tvnumdias.setFocusable(false);
         tvdosis.setFocusable(false);
         tvindicaciones.setFocusable(false);
         tvfrecuencia.setFocusable(false);
+        //modificar.setVisibility(View.GONE);
+        contenedorNombre.setVisibility(View.GONE);
 
-        modificar = (ImageButton) findViewById(R.id.btnModificar);
+
         modificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Stop();
                 tvnumdias.setFocusableInTouchMode(true);
                 tvdosis.setFocusableInTouchMode(true);
                 tvindicaciones.setFocusableInTouchMode(true);
+
+                guardarCambios.setVisibility(View.VISIBLE);
+                //modificar.setVisibility(View.VISIBLE);
+                contenedorNombre.setVisibility(View.VISIBLE);
+                tvname.requestFocus();
+                collapsingToolbarLayout.setFocusableInTouchMode(true);
+
             }
         });
 
+        //Guardar cambios al modificar un medicamento
+        guardarCambios=(Button)findViewById(R.id.btnGuardar);
+        guardarCambios.setVisibility(View.INVISIBLE);
+        guardarCambios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(DetailsActivity.this,"Los datos fueron modificados correctamente",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(DetailsActivity.this, MisMedicamentosActivity.class));
+                //nombre
+                String nombreActualizado = (tvname.getText()).toString();
+                //numero de dias
+                String numDias = (tvnumdias.getText()).toString();
+                int num_dias = Integer.parseInt(numDias);
+                //dosis
+                String cantidad_dosis = (tvdosis.getText()).toString();
+                int cant_dosis = Integer.parseInt(cantidad_dosis);
+                //indicaciones
+                String indicaciones = (tvindicaciones.getText()).toString();
+
+
+
+                modificar_medicamento(nombreMed, nombreActualizado, num_dias,cant_dosis,indicaciones);
+            }
+        });
+
+
+       // helpher
         helpher = new DatabaseHelpher(this);
         dbList= new ArrayList<MedicamentoModel>();
         dbList = helpher.getDataFromDB();
@@ -94,7 +155,7 @@ public class DetailsActivity extends AppCompatActivity {
             tvdosis.setText(String.valueOf(dosis));
             tvindicaciones.setText(indicaciones);
             //tvfrecuencia.setText(frecuencia);
-
+            //Guardo el nombre en una variable tmp nombreMed para el título
             nombreMed = name;
         }
 
@@ -102,6 +163,7 @@ public class DetailsActivity extends AppCompatActivity {
         //collapsin
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(nombreMed);
+
         dynamicToolbarColor();
         toolbarTextAppernce();
         //fin collapsin
@@ -110,6 +172,21 @@ public class DetailsActivity extends AppCompatActivity {
 
 
     }
+    //hilos
+    private void startFlash() {
+        Animation animacion = new AlphaAnimation(1,0);
+        animacion.setDuration(250);
+        animacion.setInterpolator(new LinearInterpolator());
+        animacion.setRepeatCount(8);
+        animacion.setRepeatMode(Animation.REVERSE);
+        modificar.startAnimation(animacion);
+    }
+
+    public void Stop() {
+        h.removeMessages(0);
+    }
+
+
 
     //metodos para collapsing
     private void dynamicToolbarColor() {
@@ -148,6 +225,28 @@ public class DetailsActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    //Método para Modificar medicamento
+    public void modificar_medicamento(String nombreMed, String nombreActual,  int numDias, int dosis, String indicaciones) {
+        SQLiteDatabase bd = helpher.getWritableDatabase();
+        ContentValues registro = new ContentValues();
+        registro.put(helpher.Name, nombreActual);
+        registro.put(helpher.NumDias, numDias);
+        registro.put(helpher.Dosis, dosis);
+        registro.put(helpher.Indicaciones, indicaciones);
+
+        Log.d("NOMBRE MEDICAMENTO",""+ nombreMed);
+        int cant = bd.update("medicamentos", registro, "name = + '" + nombreMed + "'", null);
+        bd.close();
+        if (cant == 1) {
+            Toast.makeText(this, "Medicamento modificado correctamente", Toast.LENGTH_SHORT).show();
+            Log.d(""+nombreMed," MODIFICADO CORRECTAMENTE");
+        }else {
+            //Toast.makeText(this, "No existe un medicamento con ese nombre, Toast.LENGTH_SHORT).show();
+            Log.d(""+nombreMed," NO SE RECONOCE MEDICAMENTO");
+        }
+    }
+
 
 
 

@@ -33,6 +33,21 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin" />
 
+            <Button
+                android:text="Modificar"
+                android:id="@+id/btnModificar"
+                android:backgroundTint="#ffffff"
+                android:textColor="@android:color/background_dark"
+                android:textSize="22sp"
+                android:fontFamily="sans-serif"
+                android:textAllCaps="false"
+                android:elevation="24dp"
+                android:layout_gravity="right"
+                android:textAlignment="center"
+                app:layout_collapseParallaxMultiplier="1.0"
+                android:layout_height="65dp"
+                android:layout_width="125dp" />
+
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
@@ -49,20 +64,13 @@
             android:orientation="vertical"
             android:paddingTop="10dp"
             android:weightSum="1">
+
+
+
             <include layout="@layout/activity_details_dos" />
         </LinearLayout>
 
 
     </android.support.v4.widget.NestedScrollView>
-
-    <ImageButton
-        android:id="@+id/btnModificar"
-        style="@style/FloatingActionButton"
-        android:src="@drawable/icono_modificar_01"
-        android:layout_alignParentTop="true"
-
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="255dp"
-        android:contentDescription="@null" />
 
 </android.support.design.widget.CoordinatorLayout>

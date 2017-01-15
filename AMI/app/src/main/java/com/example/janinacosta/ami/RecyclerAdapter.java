@@ -4,7 +4,10 @@ import android.animation.Animator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.database.Cursor;
+=======
+>>>>>>> f4afa001ac08ff5464e90d4a54be2f249cf63ff8
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,6 +32,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     //data
     static List<MedicamentoModel> dbList;
     static Context context;
+    final String NOMBRE_BASEDATOS = "mediAlarmas.db";
+
 
 
     //constructor
@@ -81,6 +86,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                     //getAdapterPosition() para obtener la posición del card en el recycler
                     int position = getAdapterPosition();
                     String identificarNombre = dbList.get(position).getName();
+<<<<<<< HEAD
                     //para eliminar un medicamento
 
                     int cant = bd.delete("medicamentos", "name='" + identificarNombre+"'", null);
@@ -89,6 +95,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                         Toast.makeText(RecyclerAdapter.context, "Ha eliminado el medicamento " +  identificarNombre, Toast.LENGTH_LONG).show();
 
                     //Toast.makeText(RecyclerAdapter.context, "Ha eliminado el medicamento " +  identificarNombre, Toast.LENGTH_LONG).show();
+=======
+
+                    //para eliminar un medicamento ****revisar el evento click
+                    //Log.d("","Click en boton eliminar");
+                    //Log.d("NOMBRE Q LLEGA "+identificarNombre,"");
+                    //eliminar_medicamento(identificarNombre);
+
+                    Toast.makeText(RecyclerAdapter.context, "Ha eliminado el medicamento " +  identificarNombre, Toast.LENGTH_LONG).show();
+>>>>>>> f4afa001ac08ff5464e90d4a54be2f249cf63ff8
                 }
             });
 
@@ -101,7 +116,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             extras.putInt("position",getAdapterPosition());
             intent.putExtras(extras);
             context.startActivity(intent);
-            Toast.makeText(RecyclerAdapter.context, "click " + getAdapterPosition(), Toast.LENGTH_LONG).show();
+            //Toast.makeText(RecyclerAdapter.context, "click " + getAdapterPosition(), Toast.LENGTH_LONG).show();
+            //Toast.makeText(RecyclerAdapter.context, "El botón modificar le permite realizar cambios", Toast.LENGTH_LONG).show();
+        }
+
+        //método para eliminar un medicamento
+
+        public void eliminar_medicamento(String namess){
+            String sql = "DELETE FROM medicamentos WHERE name = + '" + namess + "'";
+            SQLiteDatabase bd = helpher.getWritableDatabase();
+            bd.execSQL(sql);
+
         }
     }
 
@@ -131,5 +156,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         int endRadius = 0;
         Animator a = ViewAnimationUtils.createCircularReveal(v, centerX, centerY, startRadius, endRadius);
     }
-    //transición a otro layout por medio de un flotante
+
+
+
+
 }
