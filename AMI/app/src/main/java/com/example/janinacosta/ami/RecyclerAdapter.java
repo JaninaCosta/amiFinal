@@ -4,10 +4,7 @@ import android.animation.Animator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-<<<<<<< HEAD
 import android.database.Cursor;
-=======
->>>>>>> f4afa001ac08ff5464e90d4a54be2f249cf63ff8
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
@@ -86,7 +83,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                     //getAdapterPosition() para obtener la posición del card en el recycler
                     int position = getAdapterPosition();
                     String identificarNombre = dbList.get(position).getName();
-<<<<<<< HEAD
+
                     //para eliminar un medicamento
 
                     int cant = bd.delete("medicamentos", "name='" + identificarNombre+"'", null);
@@ -94,16 +91,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                     if (cant == 1)
                         Toast.makeText(RecyclerAdapter.context, "Ha eliminado el medicamento " +  identificarNombre, Toast.LENGTH_LONG).show();
 
+
                     //Toast.makeText(RecyclerAdapter.context, "Ha eliminado el medicamento " +  identificarNombre, Toast.LENGTH_LONG).show();
-=======
+
 
                     //para eliminar un medicamento ****revisar el evento click
                     //Log.d("","Click en boton eliminar");
                     //Log.d("NOMBRE Q LLEGA "+identificarNombre,"");
                     //eliminar_medicamento(identificarNombre);
 
-                    Toast.makeText(RecyclerAdapter.context, "Ha eliminado el medicamento " +  identificarNombre, Toast.LENGTH_LONG).show();
->>>>>>> f4afa001ac08ff5464e90d4a54be2f249cf63ff8
+
                 }
             });
 
