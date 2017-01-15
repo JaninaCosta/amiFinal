@@ -4,9 +4,12 @@ import android.animation.Animator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -60,7 +63,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         public TextView name,dosis, frecuencia;
         Button eliminar;
-        DatabaseHelpher helpher;
+        DatabaseHelpher helpher ;
 
         public ViewHolder(View itemLayoutView) {
             super(itemLayoutView);
@@ -68,18 +71,24 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             eliminar= (Button)itemLayoutView .findViewById(R.id.btnEliminar);
             //frecuencia = (TextView) itemLayoutView .findViewById(R.id.rvfrecuencia);
             itemLayoutView.setOnClickListener(this);
-
             eliminar.setOnClickListener(new View.OnClickListener(){
 
                 @Override
                 public void onClick(View view) {
+                    helpher = new DatabaseHelpher(RecyclerAdapter.context);
+                    SQLiteDatabase bd = helpher.getWritableDatabase();
 
                     //getAdapterPosition() para obtener la posición del card en el recycler
                     int position = getAdapterPosition();
                     String identificarNombre = dbList.get(position).getName();
                     //para eliminar un medicamento
-                    //helpher.deleteARow(identificarNombre);
-                    Toast.makeText(RecyclerAdapter.context, "Ha eliminado el medicamento " +  identificarNombre, Toast.LENGTH_LONG).show();
+
+                    int cant = bd.delete("medicamentos", "name='" + identificarNombre+"'", null);
+                    bd.close();
+                    if (cant == 1)
+                        Toast.makeText(RecyclerAdapter.context, "Ha eliminado el medicamento " +  identificarNombre, Toast.LENGTH_LONG).show();
+
+                    //Toast.makeText(RecyclerAdapter.context, "Ha eliminado el medicamento " +  identificarNombre, Toast.LENGTH_LONG).show();
                 }
             });
 
