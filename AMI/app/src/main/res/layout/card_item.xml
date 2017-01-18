@@ -28,7 +28,7 @@
             android:layout_alignTop="@+id/btnEliminar"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="-10dp"
             android:layout_marginLeft="10dp"/>
 
         <TextView
@@ -43,19 +43,29 @@
             android:textSize="16sp"
             android:layout_alignTop="@+id/btnEliminar"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="10dp"/>
 
         <Button
             android:text="Eliminar"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="0dp"
             android:id="@+id/btnEliminar"
             android:textColor="#424242"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="55dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true" />
+
+        <Button
+            android:text="Ver Detalles"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnVerDetalle"
+            android:textColor="#424242"
+            android:layout_alignBaseline="@+id/rvname"
+            android:layout_alignBottom="@+id/rvname"
+            android:layout_alignEnd="@+id/btnEliminar" />
 
         <TextView
             android:id="@+id/rvname"

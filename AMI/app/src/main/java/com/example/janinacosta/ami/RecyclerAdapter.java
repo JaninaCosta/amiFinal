@@ -53,7 +53,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.name.setText(dbList.get(position).getName());
 
         holder.frecuencia.setText("Cada "+ dbList.get(position).getFrecuencia()+" horas");
-        holder.dosis.setText("Dosis: "+ dbList.get(position).getDosis());
+        holder.dosis.setText("Dosis diaria: "+ dbList.get(position).getDosis());
 
     }
 

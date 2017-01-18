@@ -45,6 +45,7 @@ public class DetailsActivity extends AppCompatActivity {
     int position;
     TextView tvname,tvdosis, tvnumdias, tvindicaciones, tvfrecuencia;
     RelativeLayout contenedorNombre;
+    LinearLayout layout_detalles;
     String nombreMed;
     Button modificar, guardarCambios;
     Handler h;
@@ -75,6 +76,7 @@ public class DetailsActivity extends AppCompatActivity {
         tvfrecuencia =(EditText)findViewById(R.id.frecuencia);
         modificar = (Button) findViewById(R.id.btnModificar);
         contenedorNombre = (RelativeLayout) findViewById(R.id.layout_nombre);
+        layout_detalles = (LinearLayout) findViewById(R.id.layout_detalles);
 
         //hilos
         h = new Handler();
@@ -88,12 +90,20 @@ public class DetailsActivity extends AppCompatActivity {
         //fin hilos
 
         //modificar
-        tvnumdias.setFocusable(false);
-        tvdosis.setFocusable(false);
-        tvindicaciones.setFocusable(false);
-        tvfrecuencia.setFocusable(false);
-        //modificar.setVisibility(View.GONE);
-        contenedorNombre.setVisibility(View.GONE);
+        layout_detalles.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                tvnumdias.setFocusable(false);
+                tvdosis.setFocusable(false);
+                tvindicaciones.setFocusable(false);
+                tvfrecuencia.setFocusable(false);
+                guardarCambios.setVisibility(View.VISIBLE);
+                contenedorNombre.setVisibility(View.VISIBLE);
+                tvname.requestFocus();
+            }
+        });
+
 
 
         modificar.setOnClickListener(new View.OnClickListener() {

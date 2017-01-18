@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contextClickable="false"
-            android:hint="Dosis"
+            android:hint="Dosis diaria"
             android:inputType="number"
             android:textSize="23sp"
             android:fontFamily="sans-serif" />

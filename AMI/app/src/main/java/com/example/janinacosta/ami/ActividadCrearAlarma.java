@@ -53,6 +53,9 @@ public class ActividadCrearAlarma extends AppCompatActivity {
     //helper
     DatabaseHelpher helpher;
 
+    //Alarma
+    AlarmaModel alarma_inicial;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +96,24 @@ public class ActividadCrearAlarma extends AppCompatActivity {
                 helpher.insert_medicamento(medicamento_new.getName(), medicamento_new.getNum_dias(),medicamento_new.getDosis(),medicamento_new.getIndicaciones(),Integer.valueOf(e_frecuencia.getText().toString()));
 
                 Toast.makeText(ActividadCrearAlarma.this, medicamento_new.getName()+" agregado a 'Mis Medicamentos'", Toast.LENGTH_LONG).show();
+
+                helpher.insert_alarma(alarma_inicial.getHora(),alarma_inicial.getMin());
+
+                //Alarma iniciando
+                calendar.set(Calendar.HOUR_OF_DAY, alarma_inicial.getHora());
+                calendar.set(Calendar.MINUTE, alarma_inicial.getMin());
+
+                //
+                my_intent.putExtra("extra", "alarm on");
+
+                //create a pending intent
+                pending_intent = PendingIntent.getBroadcast(ActividadCrearAlarma.this, 0,
+                        my_intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                //set the alarm manager
+                alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pending_intent);
+
+                //FIN ALARMA
 
                 Intent i = new Intent(getApplicationContext(), MisMedicamentosActivity.class);
                 startActivity(i);
@@ -197,7 +218,7 @@ public class ActividadCrearAlarma extends AppCompatActivity {
                     minute_string = "0" + String.valueOf(minutos);
                 }
 
-
+                alarma_inicial = new AlarmaModel(hora,minutos);
                 /*String am_pm="";
                 if (calendar.get(Calendar.AM_PM) == Calendar.AM)
                     am_pm = "AM";

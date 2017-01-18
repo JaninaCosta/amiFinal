@@ -94,6 +94,19 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
         Toast.makeText(context, nombre+" creado con éxito", Toast.LENGTH_LONG);
 
     }
+    /** Insertar una alarma **/
+    public void insert_alarma(int hora , int min){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("hora", hora);
+        values.put("min", min);
+        db.insert("alarma", null, values);
+        db.close();
+        Toast.makeText(context, "Alarma configurada con éxito", Toast.LENGTH_LONG);
+
+    }
+
+
     /* Obtener todos los medicamentos de la base para el recycler */
 
     public List<MedicamentoModel> getDataFromDB(){
