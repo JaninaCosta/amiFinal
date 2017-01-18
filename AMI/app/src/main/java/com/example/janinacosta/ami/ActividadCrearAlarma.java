@@ -42,7 +42,7 @@ public class ActividadCrearAlarma extends AppCompatActivity {
     private PendingIntent pending_intent;
     private Intent my_intent;
     final Calendar calendar= Calendar.getInstance();
-
+    EditText e_hora_inicial, e_frecuencia;
 
     //collapsing
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
@@ -57,6 +57,12 @@ public class ActividadCrearAlarma extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_alarma);
+
+        //
+        e_hora_inicial= (EditText)findViewById(R.id.txt_HoraInicial);
+        e_frecuencia= (EditText)findViewById(R.id.txt_frecuencia);
+
+        //
 
         //****RECIBIR DATOs DE ACTIVITY NUEVO MEDICAMENTO
         // 1. get passed intent
@@ -84,7 +90,7 @@ public class ActividadCrearAlarma extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 helpher = new DatabaseHelpher(ActividadCrearAlarma.this);
-                helpher.insertIntoDB(medicamento_new.getName(), medicamento_new.getNum_dias(),medicamento_new.getDosis(),medicamento_new.getIndicaciones());
+                helpher.insert_medicamento(medicamento_new.getName(), medicamento_new.getNum_dias(),medicamento_new.getDosis(),medicamento_new.getIndicaciones(),Integer.valueOf(e_frecuencia.getText().toString()));
 
                 Toast.makeText(ActividadCrearAlarma.this, medicamento_new.getName()+" agregado a 'Mis Medicamentos'", Toast.LENGTH_LONG).show();
 
@@ -112,7 +118,7 @@ public class ActividadCrearAlarma extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //frecuenciaPickerDialog();
-                action_frecuencia();
+                //action_frecuencia();
             }
 
         });
@@ -161,6 +167,7 @@ public class ActividadCrearAlarma extends AppCompatActivity {
 
         //Calendar calendar = Calendar.getInstance();
         final TimePicker tp_horaInicial = new TimePicker(this);
+        tp_horaInicial.setIs24HourView(true);
 
         AlertDialog.Builder picker_dialog_horaInicial = new AlertDialog.Builder(this).setView(tp_horaInicial);
 
@@ -178,20 +185,24 @@ public class ActividadCrearAlarma extends AppCompatActivity {
                 String hour_string = String.valueOf(hora);
                 String minute_string = String.valueOf(minutos);
 
+                String am_pm="";
+
                 if (hora > 12) {
                     hour_string = String.valueOf(hora - 12);
-                }
+                    am_pm = "PM";
+                }else
+                    am_pm = "AM";
 
                 if (minutos < 10) {
                     minute_string = "0" + String.valueOf(minutos);
                 }
 
 
-                String am_pm="";
+                /*String am_pm="";
                 if (calendar.get(Calendar.AM_PM) == Calendar.AM)
                     am_pm = "AM";
                 else if (calendar.get(Calendar.AM_PM) == Calendar.PM)
-                    am_pm = "PM";
+                    am_pm = "PM";*/
 
                 editText_hora_inicial.setText(String.valueOf(hour_string + ":" + minute_string+" "+am_pm));
 

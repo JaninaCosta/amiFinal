@@ -15,26 +15,56 @@ import java.util.List;
  */
 
 public class DatabaseHelpher extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME="mediAlarmas";
+    private static final String DATABASE_NAME="mediAlarma";
     private static final int DATABASE_VERSION = 1;
     //private static final String MEDICAMENTOS_TABLE = "medicamentos";
 
     /*Campos de la tabla Medicamentos*/
+    static final String idMedicamento="idMedicamento";
     static final String Name="name";
     static final String NumDias = "num_dias";
     static final String Dosis = "dosis";
     static final String Indicaciones ="Indicaciones";
+    static final String Frecuencia = "frecuencia";
+
+    /*Campos de la tabla Alarma*/
+    static final String idAlarma="idAlarma";
+    static final String hora = "hora";
+    static final String min  = "min";
+
+    /*Campos de la tabla Alarma_Medicamento*/
+    static final String idmed_alarma="idmed_alarma";
+    static final String fkAlarma = "fkAlarma";
+    static final String fkMedicamento  = "fkMedicamento";
+
     Context context;
 
     /*Tabla de Medicamenos*/
     private static final String MED_TABLE = "create table medicamentos" +
-            "(" + Name + " TEXT primary key, "
+            "(" + idMedicamento + " INTEGER primary key autoincrement, "
+            + Name + " TEXT , "
             + NumDias + " INT, "
             + Dosis + " INT, "
-            + Indicaciones + " TEXT)";
+            + Indicaciones + " TEXT,"
+            + Frecuencia + " INT,"
+            + "UNIQUE (idMedicamento))";
 
     /*private static final String MED_TABLE = "create table "+MEDICAMENTOS_TABLE +
             "(name TEXT primary key, num_dias INT, dosis TEXT, indicaciones TEXT)";*/
+
+    /*Tabla de Alarma*/
+    private static final String ALARMA_TABLE = "create table alarma" +
+            "("+idAlarma  + " INTEGER primary key autoincrement, "
+            + hora + " INT, "
+            + min + " INT, "
+            + "UNIQUE (idAlarma))";
+
+    /*Tabla de Medicamento-Alarma*/
+    private static final String MED_ALARMA_TABLE = "create table med_alarma" +
+            "("+idmed_alarma  + " INTEGER primary key autoincrement, "
+            + fkAlarma + " INTEGER, "
+            + fkMedicamento + " INTEGER, "
+            + "UNIQUE (idmed_alarma))";
 
 
     //constructor de la clase
@@ -46,17 +76,19 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(MED_TABLE);
+        db.execSQL(ALARMA_TABLE);
     }
 
 
     /***METODO PARA INSERTAR EN LA BDD*/
-    public void insertIntoDB(String nombre, int num_dias , int dosis, String indicaciones){
+    public void insert_medicamento(String nombre, int num_dias , int dosis, String indicaciones, int frecuencia){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("name", nombre);
         values.put("num_dias", num_dias);
         values.put("dosis", dosis);
         values.put("indicaciones", indicaciones);
+        values.put("frecuencia",frecuencia);
         db.insert("medicamentos", null, values);
         db.close();
         Toast.makeText(context, nombre+" creado con éxito", Toast.LENGTH_LONG);
@@ -71,7 +103,7 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
         if (cursor.moveToFirst()){
             do {
-                MedicamentoModel model = new MedicamentoModel(cursor.getString(0),cursor.getInt(1),cursor.getInt(2),cursor.getString(3),"");
+                MedicamentoModel model = new MedicamentoModel(cursor.getString(1),cursor.getInt(2),cursor.getInt(3),cursor.getString(4),Integer.valueOf(cursor.getString(5)));
                 //model.setName(cursor.getString(0));
                 //model.setNum_dias(cursor.getInt(1));
                 //model.setDosis(cursor.getInt(2));

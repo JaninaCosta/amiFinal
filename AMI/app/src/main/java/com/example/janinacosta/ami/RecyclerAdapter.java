@@ -51,7 +51,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(RecyclerAdapter.ViewHolder holder, int position) {
         holder.name.setText(dbList.get(position).getName());
-        //holder.frecuencia.setText(dbList.get(position).getFrecuencia());
+
+        holder.frecuencia.setText("Cada "+ dbList.get(position).getFrecuencia()+" horas");
+        holder.dosis.setText("Dosis: "+ dbList.get(position).getDosis());
 
     }
 
@@ -70,9 +72,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         public ViewHolder(View itemLayoutView) {
             super(itemLayoutView);
             name = (TextView) itemLayoutView .findViewById(R.id.rvname);
+            frecuencia = (TextView) itemLayoutView .findViewById(R.id.rvfrecuencia);
+            dosis = (TextView) itemLayoutView .findViewById(R.id.rvdosis);
+
             eliminar= (Button)itemLayoutView .findViewById(R.id.btnEliminar);
             //frecuencia = (TextView) itemLayoutView .findViewById(R.id.rvfrecuencia);
             itemLayoutView.setOnClickListener(this);
+
+            //Accion boton eliminar
             eliminar.setOnClickListener(new View.OnClickListener(){
 
                 @Override

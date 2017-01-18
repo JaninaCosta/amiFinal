@@ -88,7 +88,7 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
                     String indicaciones = etIndicaciones.getText().toString();
                     //String frecuencia=etFrecuencia.getText().toString();
 
-                    MedicamentoModel medicamento_new= new MedicamentoModel(name,num_dias,dosis,indicaciones,"");
+                    MedicamentoModel medicamento_new= new MedicamentoModel(name,num_dias,dosis,indicaciones,0);
 
                     // 1. create an intent pass class name or intnet action name
                     Intent intent = new Intent(getApplicationContext(), ActividadCrearAlarma.class);

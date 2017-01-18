@@ -48,7 +48,7 @@ public class DetailsActivity extends AppCompatActivity {
     String nombreMed;
     Button modificar, guardarCambios;
     Handler h;
-    final String NOMBRE_BASEDATOS = "mediAlarmas.db";
+    final String NOMBRE_BASEDATOS = "mediAlarma.db";
 
 
     //collapsing
@@ -103,6 +103,7 @@ public class DetailsActivity extends AppCompatActivity {
                 tvnumdias.setFocusableInTouchMode(true);
                 tvdosis.setFocusableInTouchMode(true);
                 tvindicaciones.setFocusableInTouchMode(true);
+                tvfrecuencia.setFocusableInTouchMode(true);
 
                 guardarCambios.setVisibility(View.VISIBLE);
                 //modificar.setVisibility(View.VISIBLE);
@@ -149,12 +150,13 @@ public class DetailsActivity extends AppCompatActivity {
             int dias= dbList.get(position).getNum_dias();
             int dosis=dbList.get(position).getDosis();
             String indicaciones= dbList.get(position).getIndicaciones();
+            int frecuencia= dbList.get(position).getFrecuencia();
 
             tvname.setText(name);
             tvnumdias.setText(String.valueOf(dias));
             tvdosis.setText(String.valueOf(dosis));
             tvindicaciones.setText(indicaciones);
-            //tvfrecuencia.setText(frecuencia);
+            tvfrecuencia.setText(String.valueOf(frecuencia));
             //Guardo el nombre en una variable tmp nombreMed para el título
             nombreMed = name;
         }

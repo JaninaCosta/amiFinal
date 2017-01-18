@@ -11,9 +11,9 @@ public class MedicamentoModel implements Serializable {
     private int num_dias;
     private int dosis;
     private String indicaciones;
-    private String frecuencia;
+    private int frecuencia;
 
-    public MedicamentoModel(String name, int num_dias, int dosis, String indicaciones, String frecuencia) {
+    public MedicamentoModel(String name, int num_dias, int dosis, String indicaciones, int frecuencia) {
         this.name = name;
         this.num_dias = num_dias;
         this.dosis = dosis;
@@ -53,11 +53,11 @@ public class MedicamentoModel implements Serializable {
         this.indicaciones = indicaciones;
     }
 
-    public String getFrecuencia() {
+    public int getFrecuencia() {
         return frecuencia;
     }
 
-    public void setFrecuencia(String frecuencia) {
+    public void setFrecuencia(int frecuencia) {
         this.frecuencia = frecuencia;
     }
 }
