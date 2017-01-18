@@ -29,7 +29,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     //data
     static List<MedicamentoModel> dbList;
     static Context context;
-    final String NOMBRE_BASEDATOS = "mediAlarmas.db";
+    final String NOMBRE_BASEDATOS = "medAlarmas.db";
 
 
 
@@ -51,7 +51,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(RecyclerAdapter.ViewHolder holder, int position) {
         holder.name.setText(dbList.get(position).getName());
-
         holder.frecuencia.setText("Cada "+ dbList.get(position).getFrecuencia()+" horas");
         holder.dosis.setText("Dosis diaria: "+ dbList.get(position).getDosis());
 
@@ -66,7 +65,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView name,dosis, frecuencia;
-        Button eliminar;
+        Button eliminar, verDetalle;
         DatabaseHelpher helpher ;
 
         public ViewHolder(View itemLayoutView) {
@@ -76,7 +75,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             dosis = (TextView) itemLayoutView .findViewById(R.id.rvdosis);
 
             eliminar= (Button)itemLayoutView .findViewById(R.id.btnEliminar);
-            //frecuencia = (TextView) itemLayoutView .findViewById(R.id.rvfrecuencia);
+            verDetalle = (Button)itemLayoutView .findViewById(R.id.btnVerDetalle);
             itemLayoutView.setOnClickListener(this);
 
             //Accion boton eliminar
@@ -99,15 +98,19 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                         Toast.makeText(RecyclerAdapter.context, "Ha eliminado el medicamento " +  identificarNombre, Toast.LENGTH_LONG).show();
 
 
-                    //Toast.makeText(RecyclerAdapter.context, "Ha eliminado el medicamento " +  identificarNombre, Toast.LENGTH_LONG).show();
+                }
+            });
 
+            //evento para ver detalle de un medicamento
+            verDetalle.setOnClickListener(new View.OnClickListener(){
 
-                    //para eliminar un medicamento ****revisar el evento click
-                    //Log.d("","Click en boton eliminar");
-                    //Log.d("NOMBRE Q LLEGA "+identificarNombre,"");
-                    //eliminar_medicamento(identificarNombre);
-
-
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context,DetailsActivity.class);
+                    Bundle extras = new Bundle();
+                    extras.putInt("position",getAdapterPosition());
+                    intent.putExtras(extras);
+                    context.startActivity(intent);
                 }
             });
 
@@ -115,13 +118,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         @Override
         public void onClick(View v) {
+            /*
             Intent intent = new Intent(context,DetailsActivity.class);
             Bundle extras = new Bundle();
             extras.putInt("position",getAdapterPosition());
             intent.putExtras(extras);
             context.startActivity(intent);
-            //Toast.makeText(RecyclerAdapter.context, "click " + getAdapterPosition(), Toast.LENGTH_LONG).show();
-            //Toast.makeText(RecyclerAdapter.context, "El botón modificar le permite realizar cambios", Toast.LENGTH_LONG).show();
+            */
+
         }
 
         //método para eliminar un medicamento

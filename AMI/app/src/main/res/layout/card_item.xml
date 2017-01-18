@@ -17,7 +17,7 @@
 
         <TextView
             android:id="@+id/rvfrecuencia"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:gravity="left"
             android:padding="10dp"
 
@@ -33,7 +33,7 @@
 
         <TextView
             android:id="@+id/rvdosis"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:gravity="left"
             android:padding="10dp"
 
@@ -69,7 +69,7 @@
 
         <TextView
             android:id="@+id/rvname"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:gravity="left"
             android:padding="10dp"
 

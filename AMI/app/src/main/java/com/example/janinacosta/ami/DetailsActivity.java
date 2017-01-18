@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -49,7 +50,7 @@ public class DetailsActivity extends AppCompatActivity {
     String nombreMed;
     Button modificar, guardarCambios;
     Handler h;
-    final String NOMBRE_BASEDATOS = "mediAlarma.db";
+    final String NOMBRE_BASEDATOS = "medAlarma.db";
 
 
     //collapsing
@@ -89,34 +90,29 @@ public class DetailsActivity extends AppCompatActivity {
         },1000);
         //fin hilos
 
-        //modificar
-        layout_detalles.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                tvnumdias.setFocusable(false);
-                tvdosis.setFocusable(false);
-                tvindicaciones.setFocusable(false);
-                tvfrecuencia.setFocusable(false);
-                guardarCambios.setVisibility(View.VISIBLE);
-                contenedorNombre.setVisibility(View.VISIBLE);
-                tvname.requestFocus();
-            }
-        });
-
-
+        //esto es para que al abrir los detalles salgan desactivados los campos, sólo lectura
+        tvnumdias.setFocusable(false);
+        tvdosis.setFocusable(false);
+        tvindicaciones.setFocusable(false);
+        tvfrecuencia.setFocusable(false);
+        //tvname.requestFocus();
+        //tvname.setSelection(tvname.getText().length());
+        //guardarCambios.setVisibility(View.GONE);
+        contenedorNombre.setVisibility(View.GONE);
 
         modificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Stop();
                 tvnumdias.setFocusableInTouchMode(true);
+                tvnumdias.setTextColor(Color.BLACK);
                 tvdosis.setFocusableInTouchMode(true);
+                tvdosis.setTextColor(Color.BLACK);
                 tvindicaciones.setFocusableInTouchMode(true);
+                tvindicaciones.setTextColor(Color.BLACK);
                 tvfrecuencia.setFocusableInTouchMode(true);
+                tvfrecuencia.setTextColor(Color.BLACK);
 
                 guardarCambios.setVisibility(View.VISIBLE);
-                //modificar.setVisibility(View.VISIBLE);
                 contenedorNombre.setVisibility(View.VISIBLE);
                 tvname.requestFocus();
                 collapsingToolbarLayout.setFocusableInTouchMode(true);
@@ -142,8 +138,6 @@ public class DetailsActivity extends AppCompatActivity {
                 int cant_dosis = Integer.parseInt(cantidad_dosis);
                 //indicaciones
                 String indicaciones = (tvindicaciones.getText()).toString();
-
-
 
                 modificar_medicamento(nombreMed, nombreActualizado, num_dias,cant_dosis,indicaciones);
             }

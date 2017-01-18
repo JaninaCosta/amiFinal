@@ -36,14 +36,14 @@
             <Button
                 android:text="Modificar"
                 android:id="@+id/btnModificar"
-                android:backgroundTint="#ffffff"
-                android:textColor="@android:color/background_dark"
+                android:textColor="#000000"
                 android:textSize="19sp"
                 android:fontFamily="sans-serif"
                 android:textAllCaps="false"
                 android:elevation="20dp"
                 android:layout_gravity="right"
                 android:textAlignment="center"
+                app:backgroundTint="#ffffff"
                 app:layout_collapseParallaxMultiplier="1.0"
                 android:layout_height="50dp"
                 android:layout_width="120dp" />
