@@ -61,7 +61,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_details_uno);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.icono_atras_02_01);
+        toolbar.setNavigationIcon(R.drawable.ic_btn_atras_fondo);
         setSupportActionBar(toolbar);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
@@ -89,20 +89,6 @@ public class DetailsActivity extends AppCompatActivity {
         },1000);
         //fin hilos
 
-        //modificar
-        layout_detalles.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                tvnumdias.setFocusable(false);
-                tvdosis.setFocusable(false);
-                tvindicaciones.setFocusable(false);
-                tvfrecuencia.setFocusable(false);
-                guardarCambios.setVisibility(View.VISIBLE);
-                contenedorNombre.setVisibility(View.VISIBLE);
-                tvname.requestFocus();
-            }
-        });
 
 
 
