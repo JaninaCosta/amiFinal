@@ -43,13 +43,11 @@
             android:layout_height="wrap_content"
             android:text="Nombre del Medicamento"
             android:layout_marginLeft="80dp"
+            android:focusable="true"
             android:layout_marginRight="20dp"
             android:inputType="text"
             android:textSize="22sp"
-            android:layout_below="@+id/lblName"
-           />
-
-
+            android:layout_below="@+id/lblName" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -79,7 +77,9 @@
             android:layout_marginRight="20dp"
             android:inputType="number"
             android:textSize="22sp"
-            android:layout_marginTop="80dp"    />
+            android:layout_marginTop="80dp"
+            android:fontFamily="sans-serif"
+            android:textColor="#757575"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -111,10 +111,12 @@
             android:text="Dosis del Medicamento"
             android:layout_marginLeft="80dp"
             android:layout_marginRight="20dp"
+            android:textColor="#757575"
             android:inputType="number"
             android:textSize="22sp"
             android:layout_marginTop="185dp"
-            android:layout_marginEnd="21dp" />
+            android:layout_marginEnd="21dp"
+             />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -146,9 +148,10 @@
             android:layout_marginRight="20dp"
             android:inputType="number"
             android:textSize="22sp"
-            android:textColor="#616161"
+            android:textColor="#757575"
             android:layout_marginTop="290dp"
-            android:layout_marginEnd="21dp" />
+            android:layout_marginEnd="21dp"
+             />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -180,10 +183,11 @@
             android:layout_height="wrap_content"
             android:text="Indicaciones Médicas"
             android:layout_marginLeft="80dp"
+            android:textColor="#757575"
             android:layout_marginRight="20dp"
             android:textSize="22sp"
             android:layout_marginTop="395dp"
-             />
+            />
 
         <ImageView
             android:layout_width="wrap_content"
