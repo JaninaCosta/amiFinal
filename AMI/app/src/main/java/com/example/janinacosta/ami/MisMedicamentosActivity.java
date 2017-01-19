@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,8 @@ public class MisMedicamentosActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    FloatingActionButton fab;
+    //FloatingActionButton fab;
+    Button fab;
     public static final String TRANSITION_FAB="fab_transition";
 
 
@@ -62,7 +64,10 @@ public class MisMedicamentosActivity extends AppCompatActivity {
         mAdapter = new RecyclerAdapter(this, dbList);
         mRecyclerView.setAdapter(mAdapter);
 
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+        //metodo para esconder el botonflotante redondo cuando se hace scrool, no sirve con botones normales
+
+        /*mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy)
             {
@@ -75,10 +80,10 @@ public class MisMedicamentosActivity extends AppCompatActivity {
                 if (newState == RecyclerView.SCROLL_STATE_IDLE){fab.show();}
                 super.onScrollStateChanged(recyclerView, newState);
             }
-        });
+        });*/
 
 
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (Button) findViewById(R.id.fab);
         /*fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

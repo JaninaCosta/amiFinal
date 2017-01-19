@@ -97,7 +97,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                     if (cant == 1)
                         Toast.makeText(RecyclerAdapter.context, "Ha eliminado el medicamento " +  identificarNombre, Toast.LENGTH_LONG).show();
 
-
+                    Intent i = new Intent(context.getApplicationContext(), MisMedicamentosActivity.class);
+                    context.startActivity(i);
                 }
             });
 
