@@ -36,12 +36,8 @@
             <Button
                 android:text="Modificar"
                 android:id="@+id/btnModificar"
-<<<<<<< HEAD
                 android:backgroundTint="#FAFAFA"
                 android:textColor="@android:color/background_dark"
-=======
-                android:textColor="#000000"
->>>>>>> acb5059a2b124d1067ff1291daf866454e3def20
                 android:textSize="19sp"
                 android:fontFamily="sans-serif"
                 android:textAllCaps="false"

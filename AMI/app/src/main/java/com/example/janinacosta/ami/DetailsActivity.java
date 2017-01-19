@@ -90,10 +90,6 @@ public class DetailsActivity extends AppCompatActivity {
         },1000);
         //fin hilos
 
-<<<<<<< HEAD
-
-
-=======
         //esto es para que al abrir los detalles salgan desactivados los campos, sólo lectura
         tvnumdias.setFocusable(false);
         tvdosis.setFocusable(false);
@@ -103,7 +99,6 @@ public class DetailsActivity extends AppCompatActivity {
         //tvname.setSelection(tvname.getText().length());
         //guardarCambios.setVisibility(View.GONE);
         contenedorNombre.setVisibility(View.GONE);
->>>>>>> acb5059a2b124d1067ff1291daf866454e3def20
 
         modificar.setOnClickListener(new View.OnClickListener() {
             @Override
