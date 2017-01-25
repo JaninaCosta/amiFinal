@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="1dp"
+    android:orientation="horizontal"
+    card_view:cardCornerRadius="1dp"
+    card_view:cardUseCompatPadding="true" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="97dp"
+        android:padding="4dp"
+        android:background="?android:selectableItemBackground"
+        android:layout_margin="7dp">
+
+        <TextClock
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="25dp"
+            android:id="@+id/textClock5"
+            android:textSize="21sp" />
+
+        <Button
+            android:text="Ver Detalles"
+            android:layout_width="150dp"
+            android:id="@+id/btnVerDetalled2"
+            android:textColor="#424242"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_height="60dp" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:id="@+id/idName"
+            android:textSize="21sp"
+            android:textStyle="normal|bold"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

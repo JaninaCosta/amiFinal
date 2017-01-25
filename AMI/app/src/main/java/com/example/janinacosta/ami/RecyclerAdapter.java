@@ -62,6 +62,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return dbList.size();
     }
 
+    //clase interna
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView name,dosis, frecuencia;

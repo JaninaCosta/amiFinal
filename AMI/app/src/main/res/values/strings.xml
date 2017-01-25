@@ -16,6 +16,7 @@
     <string name="title_activity_details">Detalle del Medicamento</string>
     <string name="title_activity_Nuevo_Medicamento">Crear Nuevo ... </string>
     <string name="title_activity_Mis_Medicamentos">Mis Medicamentos</string>
+    <string name="title_dia">Medicamentos del día</string>
     <string name="title_activity_Menu">Menú</string>
 
 

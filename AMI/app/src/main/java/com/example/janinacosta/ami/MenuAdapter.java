@@ -41,10 +41,10 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
                 public void onClick(View v) {
                     final Intent intent;
                     switch (getAdapterPosition()){
-                        /*case 0:
-                            intent = new Intent (v.getContext(),ActividadMedicamentosDia.class ); //modificar cuando estén creadas las actividades
+                        case 0:
+                            intent = new Intent (v.getContext(),MedicamentoDiaActivity.class ); //modificar cuando estén creadas las actividades
                             v.getContext().startActivity(intent);
-                            break;*/
+                            break;
                         case 1:
                             intent = new Intent (v.getContext(),MisMedicamentosActivity.class );
                             v.getContext().startActivity(intent);
