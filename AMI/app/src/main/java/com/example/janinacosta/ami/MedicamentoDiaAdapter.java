@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,6 +57,7 @@ public class MedicamentoDiaAdapter  extends RecyclerView.Adapter<MedicamentoDiaA
     public static class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView name;
         TextView hora1, hora2, fm;
+        ProgressBar progreso;
         Button verDetalle;
         DatabaseHelpher helpher ;
 
@@ -65,6 +67,7 @@ public class MedicamentoDiaAdapter  extends RecyclerView.Adapter<MedicamentoDiaA
             hora1 = (TextView)itemLayoutView .findViewById(R.id.hora1);
             hora2 = (TextView)itemLayoutView .findViewById(R.id.hora2);
             fm = (TextView)itemLayoutView .findViewById(R.id.fm);
+            progreso = (ProgressBar) itemLayoutView.findViewById(R.id.progressBar);
             verDetalle = (Button)itemLayoutView .findViewById(R.id.btnVerDetalled2);
             itemLayoutView.setOnClickListener(this);
             Random generadorAleatorios = new Random();
@@ -77,6 +80,9 @@ public class MedicamentoDiaAdapter  extends RecyclerView.Adapter<MedicamentoDiaA
             }else{
                 fm.setText("PM");
             }
+
+            progreso.setMax(20);
+            progreso.setProgress(3);
 
             verDetalle.setOnClickListener(new View.OnClickListener(){
 
