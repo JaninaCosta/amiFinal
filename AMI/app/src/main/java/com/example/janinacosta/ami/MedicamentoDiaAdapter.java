@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by Janina Costa on 24/1/2017.
@@ -53,18 +55,29 @@ public class MedicamentoDiaAdapter  extends RecyclerView.Adapter<MedicamentoDiaA
     //clase interna
     public static class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView name;
-        TextClock tc;
+        TextView hora1, hora2, fm;
         Button verDetalle;
         DatabaseHelpher helpher ;
 
         public Holder(View itemLayoutView) {
             super(itemLayoutView);
             name = (TextView) itemLayoutView .findViewById(R.id.idName);
-            tc = (TextClock)itemLayoutView .findViewById(R.id.textClock5);
+            hora1 = (TextView)itemLayoutView .findViewById(R.id.hora1);
+            hora2 = (TextView)itemLayoutView .findViewById(R.id.hora2);
+            fm = (TextView)itemLayoutView .findViewById(R.id.fm);
             verDetalle = (Button)itemLayoutView .findViewById(R.id.btnVerDetalled2);
             itemLayoutView.setOnClickListener(this);
+            Random generadorAleatorios = new Random();
+            int numeroAleatorio = 1+generadorAleatorios.nextInt(24);
+            hora1.setText(String.valueOf(numeroAleatorio));
+            //hora2.setText(String.valueOf(numeroAleatorio));
 
-            //evento para ver detalle de un medicamento
+            if ( numeroAleatorio <= 12 && numeroAleatorio >= 6 ){
+                fm.setText("AM");
+            }else{
+                fm.setText("PM");
+            }
+
             verDetalle.setOnClickListener(new View.OnClickListener(){
 
                 @Override
@@ -74,7 +87,7 @@ public class MedicamentoDiaAdapter  extends RecyclerView.Adapter<MedicamentoDiaA
                     extras.putInt("position",getAdapterPosition());
                     intent.putExtras(extras);
                     context.startActivity(intent);
-                    tc.setText("");
+
                 }
             });
 

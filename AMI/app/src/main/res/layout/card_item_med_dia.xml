@@ -15,12 +15,14 @@
         android:background="?android:selectableItemBackground"
         android:layout_margin="7dp">
 
-        <TextClock
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginLeft="25dp"
-            android:id="@+id/textClock5"
+            android:id="@+id/hora1"
+            android:inputType="number"
+            android:text="15"
             android:textSize="21sp" />
 
         <Button
@@ -43,6 +45,34 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="10dp" />
+
+        <TextView
+            android:text=":"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/hora1"
+            android:layout_toEndOf="@+id/hora1"
+            android:id="@+id/textView8"
+            android:textSize="21sp"/>
+
+        <TextView
+            android:text="00"
+            android:textSize="21sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView8"
+            android:layout_toEndOf="@+id/textView8"
+            android:inputType="number"
+            android:id="@+id/hora2" />
+
+        <TextView
+            android:text="PM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="21sp"
+            android:layout_alignBottom="@+id/hora2"
+            android:layout_toEndOf="@+id/hora2"
+            android:id="@+id/fm" />
 
     </RelativeLayout>
 
