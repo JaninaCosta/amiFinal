@@ -98,7 +98,7 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
 
                     // 3. or you can add data to a bundle
                     Bundle extras = new Bundle();
-                    //extras.putString("status", "Datos correctos");
+                    extras.putString("status", "Datos correctos");
 
                     // 4. add bundle to intent
                     intent.putExtras(extras);

@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textClock"
-        android:textSize="70sp"
+        android:textSize="60sp"
         android:textColor="@color/colorAccent"
         android:layout_below="@+id/textView9"
         android:layout_alignStart="@+id/alarm_off"
