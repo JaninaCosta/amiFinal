@@ -117,9 +117,25 @@ public class ActividadCrearAlarma extends AppCompatActivity {
                 helpher = new DatabaseHelpher(ActividadCrearAlarma.this);
                 helpher.insert_medicamento(medicamento_new.getName(), medicamento_new.getNum_dias(),medicamento_new.getDosis(),medicamento_new.getIndicaciones(),Integer.valueOf(e_frecuencia.getText().toString()));
 
+                //Obtener id medicamento
+                MedicamentoModel medi = helpher.getDataFromDB().get(helpher.getDataFromDB().size()-1);
+                int id_medi=medi.getId_medi();
+
+
                 Toast.makeText(ActividadCrearAlarma.this, medicamento_new.getName()+" agregado a 'Mis Medicamentos'", Toast.LENGTH_LONG).show();
 
+                //Guardar en Base de dato
                 helpher.insert_alarma(alarma_inicial.getHora(),alarma_inicial.getMin());
+
+                //Insertar relacion ALARMA_MEDI
+                for (AlarmaModel alarma : listaHoras){
+                    helpher.insert_alarma(alarma.getHora(),alarma.getMin());
+                    AlarmaModel a= helpher.getTodasAlarmas().get(helpher.getTodasAlarmas().size()-1);
+                    int id_alarma = a.getId_alarma() ;
+
+                    helpher.insert_alarma_medi(id_alarma,id_medi);
+
+                }
 
                 //Alarma iniciando
                 calendar.set(Calendar.HOUR_OF_DAY, alarma_inicial.getHora());
@@ -242,26 +258,22 @@ public class ActividadCrearAlarma extends AppCompatActivity {
                     minute_string = "0" + String.valueOf(minutos);
                 }
 
-                alarma_inicial = new AlarmaModel(hora,minutos);
-                /*String am_pm="";
-                if (calendar.get(Calendar.AM_PM) == Calendar.AM)
-                    am_pm = "AM";
-                else if (calendar.get(Calendar.AM_PM) == Calendar.PM)
-                    am_pm = "PM";*/
+                alarma_inicial = new AlarmaModel(0,hora,minutos);
 
+                //set in EditText
                 editText_hora_inicial.setText(String.valueOf(hour_string + ":" + minute_string+" "+am_pm));
 
                 //Calcular las horaas
                 frecuencia_horas = Integer.valueOf(editText_frecuencia.getText().toString());
                 String horas= "";
 
-                for(int i=hora; i<24;i=(i+frecuencia_horas)){
+                for(int i=hora; i<=24;i=(i+frecuencia_horas)){
                     horas = horas + ", "+i+":"+minutos;
 
                     calendar.set(Calendar.HOUR_OF_DAY, i);
                     calendar.set(Calendar.MINUTE, minutos);
 
-                    listaHoras.add(new AlarmaModel(i,minutos));
+                    listaHoras.add(new AlarmaModel(0,i,minutos));
 
 
                 }

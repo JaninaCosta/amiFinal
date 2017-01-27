@@ -6,15 +6,24 @@ package com.example.janinacosta.ami;
 
 public class AlarmaModel {
 
-    private int hora, min;
+    private int id_alarma,hora, min;
 
-    public AlarmaModel(int hora, int min) {
+    public AlarmaModel(int id_alarma,int hora, int min) {
+        this.id_alarma=id_alarma;
         this.hora = hora;
         this.min = min;
     }
 
     public int getHora() {
         return hora;
+    }
+
+    public int getId_alarma() {
+        return id_alarma;
+    }
+
+    public void setId_alarma(int id_alarma) {
+        this.id_alarma = id_alarma;
     }
 
     public void setHora(int hora) {

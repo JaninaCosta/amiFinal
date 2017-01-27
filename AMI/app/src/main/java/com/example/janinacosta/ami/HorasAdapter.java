@@ -40,10 +40,23 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.HolderHoras>
 
     @Override
     public void onBindViewHolder(HolderHoras holder, int position) {
-        if(dbList.size()==0){
-            holder.horas.setText("nada");
+        String am_pm,hour_string,minute_string;
+        int hora= dbList.get(position).getHora();
+        int minutos= dbList.get(position).getMin();
+
+        if (hora > 12) {
+            hour_string = String.valueOf(hora - 12);
+            am_pm = "PM";
         }else{
-        holder.horas.setText(String.valueOf(dbList.get(position).getHora()));}
+            hour_string = String.valueOf(hora);
+            am_pm = "AM";}
+
+        if (minutos < 10) {
+            minute_string = "0" + String.valueOf(minutos);
+        }else{
+            minute_string = String.valueOf(minutos);
+        }
+        holder.horas.setText(""+hour_string + ":" + minute_string+" "+am_pm);
 
     }
 

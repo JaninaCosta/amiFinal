@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.List;
 
 public class DatabaseHelpher extends SQLiteOpenHelper {
     private static final String DATABASE_NAME="medAlarma";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     //private static final String MEDICAMENTOS_TABLE = "medicamentos";
 
     /*Campos de la tabla Medicamentos*/
@@ -77,6 +78,7 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(MED_TABLE);
         db.execSQL(ALARMA_TABLE);
+        db.execSQL(MED_ALARMA_TABLE);
     }
 
 
@@ -102,7 +104,22 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
         values.put("min", min);
         db.insert("alarma", null, values);
         db.close();
-        Toast.makeText(context, "Alarma configurada con éxito", Toast.LENGTH_LONG);
+        Log.e("ALARMA", "Alarma: "+hora+":"+min );
+        //Toast.makeText(context, "Alarma configurada con éxito", Toast.LENGTH_LONG);
+
+    }
+
+
+    /** Insertar una alarma **/
+    public void insert_alarma_medi(int fk_alarma , int fk_medi){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("fkAlarma", fk_alarma);
+        values.put("fkMedicamento", fk_medi);
+        db.insert("med_alarma", null, values);
+        db.close();
+        Log.e("ALARMA_MEDI", "fk_alarma: "+fk_alarma+ " fk_medi: "+fk_medi );
+        //Toast.makeText(context, "Alarma configurada con éxito", Toast.LENGTH_LONG);
 
     }
 
@@ -116,12 +133,30 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
         if (cursor.moveToFirst()){
             do {
-                MedicamentoModel model = new MedicamentoModel(cursor.getString(1),cursor.getInt(2),cursor.getInt(3),cursor.getString(4),Integer.valueOf(cursor.getString(5)));
+                MedicamentoModel model = new MedicamentoModel(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),cursor.getInt(3),cursor.getString(4),Integer.valueOf(cursor.getString(5)));
                 //model.setName(cursor.getString(0));
                 //model.setNum_dias(cursor.getInt(1));
                 //model.setDosis(cursor.getInt(2));
                 //model.setIndicaciones(cursor.getString(3));
 
+                modelList.add(model);
+            }while (cursor.moveToNext());
+        }
+
+        return modelList;
+    }
+
+
+    /* Obtener todos los medicamentos de la base para el recycler */
+
+    public List<AlarmaModel> getTodasAlarmas(){
+        List<AlarmaModel> modelList = new ArrayList<AlarmaModel>();
+        String query = "select * from alarma";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+        if (cursor.moveToFirst()){
+            do {
+                AlarmaModel model = new AlarmaModel(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2));
                 modelList.add(model);
             }while (cursor.moveToNext());
         }

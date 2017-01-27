@@ -7,18 +7,28 @@ import java.io.Serializable;
  */
 
 public class MedicamentoModel implements Serializable {
+    private int id_medi;
     private String name;
     private int num_dias;
     private int dosis;
     private String indicaciones;
     private int frecuencia;
 
-    public MedicamentoModel(String name, int num_dias, int dosis, String indicaciones, int frecuencia) {
+    public MedicamentoModel(int id_medi,String name, int num_dias, int dosis, String indicaciones, int frecuencia) {
+        this.id_medi=id_medi;
         this.name = name;
         this.num_dias = num_dias;
         this.dosis = dosis;
         this.indicaciones = indicaciones;
         this.frecuencia = frecuencia;
+    }
+
+    public int getId_medi() {
+        return id_medi;
+    }
+
+    public void setId_medi(int id_medi) {
+        this.id_medi = id_medi;
     }
 
     public String getName() {
