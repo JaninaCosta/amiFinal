@@ -125,7 +125,7 @@ public class ActividadCrearAlarma extends AppCompatActivity {
                 Toast.makeText(ActividadCrearAlarma.this, medicamento_new.getName()+" agregado a 'Mis Medicamentos'", Toast.LENGTH_LONG).show();
 
                 //Guardar en Base de dato
-                helpher.insert_alarma(alarma_inicial.getHora(),alarma_inicial.getMin());
+                //helpher.insert_alarma(alarma_inicial.getHora(),alarma_inicial.getMin());
 
                 //Insertar relacion ALARMA_MEDI
                 for (AlarmaModel alarma : listaHoras){
