@@ -43,6 +43,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item, null);
+
         // crea un viewholder
         ViewHolder viewHolder = new ViewHolder(itemLayoutView);
         return viewHolder;
@@ -109,10 +110,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context,DetailsActivity.class);
+
                     Bundle extras = new Bundle();
                     extras.putInt("position",getAdapterPosition());
                     intent.putExtras(extras);
                     context.startActivity(intent);
+
+
                 }
             });
 

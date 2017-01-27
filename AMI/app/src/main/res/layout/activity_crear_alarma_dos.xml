@@ -3,7 +3,7 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="500dp">
+    android:layout_height="600dp">
 
 
     <android.support.design.widget.TextInputLayout
@@ -64,17 +64,7 @@
         android:layout_marginTop="130dp"/>
 
 
-    <TextView
-        android:text="Alarmas programadas del día"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView7"
-        android:textSize="23sp"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="20dp"
-        android:layout_alignStart="@+id/ic_dia" />
-
-    <TextView
+    <!--<TextView
         android:text="horas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,21 +72,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         android:id="@+id/txt_lista_horas"
-        android:textSize="23sp" />
-
-    <Button
-        android:text="Guardar"
-        android:layout_width="150dp"
-        android:layout_height="75dp"
-        android:id="@+id/btnCrearMedicamento"
-        android:layout_marginBottom="35dp"
-        android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/colorAccent"
-        android:textColor="@android:color/white"
-        android:layout_centerHorizontal="true"
-        android:textSize="23sp"
-        android:textAllCaps="false"
-        android:fontFamily="sans-serif" />
+        android:textSize="23sp" />-->
 
     <TextView
         android:text="Horas"
@@ -106,6 +82,43 @@
         android:layout_toEndOf="@+id/lbl_frecuencia"
         android:id="@+id/textView4"
         android:textSize="21sp" />
+
+    <TextView
+        android:text="Alarmas programadas del día"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView7"
+        android:textSize="23sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/lbl_frecuencia"
+        android:layout_alignEnd="@+id/lbl_hora_inicial" />
+
+    <LinearLayout
+        android:id="@+id/layout_horas"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="-40dp"
+        android:weightSum="1"
+        android:layout_height="280dp"
+        android:layout_below="@+id/textView7"
+        android:layout_alignParentStart="true">
+        <include layout="@layout/activity_recycler_horas" />
+    </LinearLayout>
+
+    <Button
+        android:text="Guardar"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:id="@+id/btnCrearMedicamento"
+        android:backgroundTint="@color/colorAccent"
+        android:textColor="@android:color/white"
+        android:textSize="23sp"
+        android:textAllCaps="false"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/layout_horas"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp" />
 
 
 </RelativeLayout>

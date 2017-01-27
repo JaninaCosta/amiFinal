@@ -111,7 +111,7 @@ public class DetailsActivity extends AppCompatActivity {
                 tvindicaciones.setTextColor(Color.BLACK);
                 tvfrecuencia.setFocusableInTouchMode(true);
                 tvfrecuencia.setTextColor(Color.BLACK);
-
+                modificar.setVisibility(View.GONE);
                 guardarCambios.setVisibility(View.VISIBLE);
                 contenedorNombre.setVisibility(View.VISIBLE);
                 tvname.requestFocus();
@@ -127,7 +127,7 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(DetailsActivity.this,"Los datos fueron modificados correctamente",Toast.LENGTH_LONG).show();
-                startActivity(new Intent(DetailsActivity.this, MisMedicamentosActivity.class));
+
                 //nombre
                 String nombreActualizado = (tvname.getText()).toString();
                 //numero de dias
@@ -138,8 +138,14 @@ public class DetailsActivity extends AppCompatActivity {
                 int cant_dosis = Integer.parseInt(cantidad_dosis);
                 //indicaciones
                 String indicaciones = (tvindicaciones.getText()).toString();
+                //frecuencia
+                String frecuencia = (tvfrecuencia.getText()).toString();
+                int num_freq = Integer.parseInt(frecuencia);
 
-                modificar_medicamento(nombreMed, nombreActualizado, num_dias,cant_dosis,indicaciones);
+                modificar_medicamento(nombreMed, nombreActualizado, num_dias,cant_dosis,indicaciones,num_freq);
+
+                startActivity(new Intent(DetailsActivity.this, MisMedicamentosActivity.class));
+                finish();
             }
         });
 
@@ -215,22 +221,19 @@ public class DetailsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-        }
+        finish();
         return super.onOptionsItemSelected(item);
     }
 
     //Método para Modificar medicamento
-    public void modificar_medicamento(String nombreMed, String nombreActual,  int numDias, int dosis, String indicaciones) {
+    public void modificar_medicamento(String nombreMed, String nombreActual,  int numDias, int dosis, String indicaciones, int frecuencia) {
         SQLiteDatabase bd = helpher.getWritableDatabase();
         ContentValues registro = new ContentValues();
         registro.put(helpher.Name, nombreActual);
         registro.put(helpher.NumDias, numDias);
         registro.put(helpher.Dosis, dosis);
         registro.put(helpher.Indicaciones, indicaciones);
+        registro.put(helpher.Frecuencia, frecuencia);
 
         Log.d("NOMBRE MEDICAMENTO",""+ nombreMed);
         int cant = bd.update("medicamentos", registro, "name = + '" + nombreMed + "'", null);

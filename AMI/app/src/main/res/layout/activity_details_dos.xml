@@ -1,240 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/layout_detalles">
-
-    <!--name-->
-
-    <RelativeLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="85dp"
-        android:id="@+id/layout_nombre">
+    android:layout_height="match_parent">
 
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_pill"
-            android:id="@+id/ic_name"
-            android:layout_marginStart="19dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="10dp"/>
-
-
-        <TextView
-            android:id="@+id/lblName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Medicamento"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="20dp"
-            android:textSize="23sp"
-            android:textColor="#424242"
-            android:layout_marginEnd="21dp" />
-
-        <EditText
-            android:id="@+id/txtnameEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nombre del Medicamento"
-            android:layout_marginLeft="80dp"
-            android:focusable="true"
-            android:layout_marginRight="20dp"
-            android:inputType="text"
-            android:textSize="22sp"
-            android:layout_below="@+id/lblName" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:layout_marginTop="-20dp">
-
-        <!--dias-->
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Días del tratamiento"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="20dp"
-            android:textSize="23sp"
-            android:layout_marginTop="45dp"
-            android:textColor="#424242"
-            android:layout_marginEnd="21dp" />
-        <EditText
-            android:id="@+id/diasMedicamento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Días del tratamiento"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="20dp"
-            android:inputType="number"
-            android:textSize="22sp"
-            android:layout_marginTop="80dp"
-            android:fontFamily="sans-serif"
-            android:textColor="#757575"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_dias"
-            android:id="@+id/ic_dias"
-            android:layout_marginStart="19dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="60dp" />
-
-        <!--dosis-->
-
-        <TextView
-            android:id="@+id/lblDias"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dosis del Medicamento"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="20dp"
-            android:textSize="23sp"
-            android:textColor="#424242"
-            android:layout_marginTop="150dp"
-            android:layout_marginEnd="21dp" />
-
-        <EditText
-            android:id="@+id/dosis"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dosis del Medicamento"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="20dp"
-            android:textColor="#757575"
-            android:inputType="number"
-            android:textSize="22sp"
-            android:layout_marginTop="185dp"
-            android:layout_marginEnd="21dp"
-             />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_dosis"
-            android:id="@+id/ic_dosis"
-            android:layout_marginStart="19dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="165dp" />
-        <!--frecuencia-->
-
-        <TextView
-            android:id="@+id/lblFrecuencia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Frecuencia"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="20dp"
-            android:textSize="23sp"
-            android:textColor="#424242"
-            android:layout_marginTop="255dp"
-            android:layout_marginEnd="21dp" />
-        <EditText
-            android:id="@+id/frecuencia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="20dp"
-            android:inputType="number"
-            android:textSize="22sp"
-            android:textColor="#757575"
-            android:layout_marginTop="290dp"
-            android:layout_marginEnd="21dp"
-             />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_frecuencias"
-            android:id="@+id/ic_frecuencia"
-            android:layout_marginStart="19dp"
-            android:layout_marginTop="270dp"
-            android:layout_marginLeft="25dp"
-            />
-
-        <!--indicaciones-->
-
-        <TextView
-            android:id="@+id/lblIndicacione"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Indicaciones Médicas"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="20dp"
-            android:textSize="23sp"
-            android:textColor="#424242"
-            android:layout_marginTop="360dp"
-             />
-
-        <EditText
-            android:id="@+id/indicaciones"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Indicaciones Médicas"
-            android:layout_marginLeft="80dp"
-            android:textColor="#757575"
-            android:layout_marginRight="20dp"
-            android:textSize="22sp"
-            android:layout_marginTop="395dp"
-            />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_indicaciones"
-            android:id="@+id/ic_indicaciones"
-            android:layout_marginStart="19dp"
-            android:layout_marginLeft="25dp"
-
-            android:layout_marginTop="375dp" />
-
-
-
-
-
-        <!--<Button
-            android:text="modificar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/button3" />-->
-
-
-        <Button
-            android:text="Guardar"
-            android:layout_width="150dp"
-            android:id="@+id/btnGuardar"
-            android:backgroundTint="@color/colorAccent"
-            android:textColor="@android:color/white"
-            android:textSize="23sp"
-            android:fontFamily="sans-serif"
-            android:textAllCaps="false"
-            android:layout_height="75dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
-
-
-    </RelativeLayout>
-
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/lbl_NombreMedicament"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="70dp">
 
-    </android.support.design.widget.AppBarLayout>
+        <EditText
+            android:id="@+id/txt_NombreMedicament"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre del Medicamento"
+            android:textSize="23sp"
+            android:fontFamily="sans-serif" />
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_pill"
+        android:id="@+id/ic_pasti"
+        android:layout_marginStart="19dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="60dp" />
 
 
-</LinearLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/lbl_DiasDeMedicament"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="70dp">
+
+        <EditText
+            android:id="@+id/txt_DiasDeMedicament"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contextClickable="false"
+            android:inputType="number"
+            android:hint="Días de tratamiento"
+            android:textSize="23sp"
+            android:fontFamily="sans-serif" />
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_dias"
+        android:id="@+id/ic_dia"
+        android:layout_marginStart="19dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="130dp"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/lbl_dosis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="70dp">
+
+        <EditText
+            android:id="@+id/txt_dosis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contextClickable="false"
+            android:hint="Dosis diaria"
+            android:inputType="number"
+            android:textSize="23sp"
+            android:fontFamily="sans-serif" />
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_dosis"
+        android:id="@+id/ic_dosis"
+        android:layout_marginStart="19dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="200dp"/>
+
+    <!--
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/lbl_dosis"
+        android:layout_alignStart="@+id/lbl_dosis"
+        android:id="@+id/editText" />-->
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/lbl_indicaciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="70dp">
+
+        <EditText
+            android:id="@+id/txt_indicaciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="5"
+            android:hint="Indicaciones Médicas"
+            android:textSize="23sp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_indicaciones"
+        android:id="@+id/ic_indicaciones"
+        android:layout_marginStart="19dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="270dp"/>
+
+    <Button
+        android:text="Siguiente"
+        android:layout_width="150dp"
+        android:id="@+id/btnSiguiente"
+        android:layout_below="@+id/lbl_indicaciones"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/colorAccent"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="75dp"
+        android:textSize="23sp"
+        android:fontFamily="sans-serif"
+        android:textAllCaps="false"
+        android:layout_height="75dp" />
+
+
+</RelativeLayout>

@@ -12,6 +12,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Layout;
 import android.util.Log;
@@ -36,6 +38,11 @@ public class ActividadCrearAlarma extends AppCompatActivity {
     private int frecuencia_horas;
     private int hora, minutos;
 
+    //data recyccler
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
     //Crear alarma
     private AlarmManager alarmManager;
     private Context context;
@@ -56,10 +63,25 @@ public class ActividadCrearAlarma extends AppCompatActivity {
     //Alarma
     AlarmaModel alarma_inicial;
 
+    ArrayList<AlarmaModel> listaHoras;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_alarma);
+
+       listaHoras= new ArrayList<AlarmaModel>();
+
+        //recycler
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycleviewhora);
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
 
         //
         e_hora_inicial= (EditText)findViewById(R.id.txt_HoraInicial);
@@ -193,6 +215,8 @@ public class ActividadCrearAlarma extends AppCompatActivity {
         AlertDialog.Builder picker_dialog_horaInicial = new AlertDialog.Builder(this).setView(tp_horaInicial);
 
         picker_dialog_horaInicial.setTitle("Definir Hora Inicial");
+
+        //Acción del boton aceptar
         picker_dialog_horaInicial.setPositiveButton("Aceptar", new DialogInterface.OnClickListener(){
 
             @Override
@@ -227,6 +251,25 @@ public class ActividadCrearAlarma extends AppCompatActivity {
 
                 editText_hora_inicial.setText(String.valueOf(hour_string + ":" + minute_string+" "+am_pm));
 
+                //Calcular las horaas
+                frecuencia_horas = Integer.valueOf(editText_frecuencia.getText().toString());
+                String horas= "";
+
+                for(int i=hora; i<24;i=(i+frecuencia_horas)){
+                    horas = horas + ", "+i+":"+minutos;
+
+                    calendar.set(Calendar.HOUR_OF_DAY, i);
+                    calendar.set(Calendar.MINUTE, minutos);
+
+                    listaHoras.add(new AlarmaModel(i,minutos));
+
+
+                }
+
+                // specify an adapter (see also next example)
+                mAdapter = new HorasAdapter(ActividadCrearAlarma.this, listaHoras);
+                mRecyclerView.setAdapter(mAdapter);
+
 
             }
         });
@@ -245,7 +288,7 @@ public class ActividadCrearAlarma extends AppCompatActivity {
         frecuencia_horas = Integer.valueOf(editText_frecuencia.getText().toString());
         String horas= "";
 
-        TextView textView_listaHoras = (TextView) findViewById(R.id.txt_lista_horas);
+        //TextView textView_listaHoras = (TextView) findViewById(R.id.txt_lista_horas);
 
         ArrayList<String> listaHoras= new ArrayList<String>();
 
@@ -267,7 +310,7 @@ public class ActividadCrearAlarma extends AppCompatActivity {
             //set the alarm manager
             alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pending_intent);
         }
-        textView_listaHoras.setText("Listas: "+horas);
+        //textView_listaHoras.setText("Listas: "+horas);
     }
 
     private void frecuenciaPickerDialog(){
@@ -295,7 +338,7 @@ public class ActividadCrearAlarma extends AppCompatActivity {
                 editText_frecuencia.setText(String.valueOf(frecuencia_horas));
                 String horas= "";
 
-                TextView textView_listaHoras = (TextView) findViewById(R.id.txt_lista_horas);
+                //TextView textView_listaHoras = (TextView) findViewById(R.id.txt_lista_horas);
 
                 ArrayList<String> listaHoras= new ArrayList<String>();
 
@@ -317,7 +360,7 @@ public class ActividadCrearAlarma extends AppCompatActivity {
                     //set the alarm manager
                     alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pending_intent);
                 }
-                textView_listaHoras.setText("Listas: "+horas);
+                //textView_listaHoras.setText("Listas: "+horas);
 
             }
         });
@@ -354,11 +397,7 @@ public class ActividadCrearAlarma extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-        }
+        finish();
         return super.onOptionsItemSelected(item);
     }
 

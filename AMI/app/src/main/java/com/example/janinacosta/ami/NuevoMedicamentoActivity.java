@@ -163,11 +163,7 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-        }
+        finish();
         return super.onOptionsItemSelected(item);
     }
 
