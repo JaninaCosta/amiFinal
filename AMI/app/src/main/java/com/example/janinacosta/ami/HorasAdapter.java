@@ -23,7 +23,7 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.HolderHoras>
     //data
     static List<AlarmaModel> dbList;
     static Context context;
-    final String NOMBRE_BASEDATOS = "medAlarmas.db";
+    final String NOMBRE_BASEDATOS = "AppmedAlarma.db";
 
     public HorasAdapter(Context context, List<AlarmaModel> dbList){
         this.dbList = new ArrayList<AlarmaModel>();

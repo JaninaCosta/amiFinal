@@ -16,8 +16,8 @@ import java.util.List;
  */
 
 public class DatabaseHelpher extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME="medAlarma";
-    private static final int DATABASE_VERSION = 4;
+    private static final String DATABASE_NAME="AppmedAlarma";
+    private static final int DATABASE_VERSION = 1;
     //private static final String MEDICAMENTOS_TABLE = "medicamentos";
 
     /*Campos de la tabla Medicamentos*/

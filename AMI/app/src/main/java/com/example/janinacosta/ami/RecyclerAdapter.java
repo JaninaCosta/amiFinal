@@ -29,7 +29,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     //data
     static List<MedicamentoModel> dbList;
     static Context context;
-    final String NOMBRE_BASEDATOS = "medAlarmas.db";
+    final String NOMBRE_BASEDATOS = "AppmedAlarma.db";
 
 
 

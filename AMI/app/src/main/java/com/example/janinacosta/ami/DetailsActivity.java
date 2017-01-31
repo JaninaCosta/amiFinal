@@ -50,7 +50,7 @@ public class DetailsActivity extends AppCompatActivity {
     String nombreMed;
     Button modificar, guardarCambios;
     Handler h;
-    final String NOMBRE_BASEDATOS = "medAlarma.db";
+    final String NOMBRE_BASEDATOS = "AppmedAlarma.db";
 
 
     //collapsing

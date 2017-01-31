@@ -27,7 +27,7 @@ public class MedicamentoDiaAdapter  extends RecyclerView.Adapter<MedicamentoDiaA
     //data
     static List<MedicamentoModel> dbList;
     static Context context;
-    final String NOMBRE_BASEDATOS = "medAlarmas.db";
+    final String NOMBRE_BASEDATOS = "AppmedAlarma.db";
 
     public MedicamentoDiaAdapter(Context context, List<MedicamentoModel> dbList){
         this.dbList = new ArrayList<MedicamentoModel>();
