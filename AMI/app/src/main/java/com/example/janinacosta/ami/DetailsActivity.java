@@ -90,7 +90,9 @@ public class DetailsActivity extends AppCompatActivity {
         },1000);
         //fin hilos
 
-        //esto es para que al abrir los detalles salgan desactivados los campos, sólo lectura
+
+
+        //esto es para que al abrir los detalles salgan desactivados los campos, sÃ³lo lectura
         tvnumdias.setFocusable(false);
         tvdosis.setFocusable(false);
         tvindicaciones.setFocusable(false);
@@ -111,14 +113,15 @@ public class DetailsActivity extends AppCompatActivity {
                 tvindicaciones.setTextColor(Color.BLACK);
                 tvfrecuencia.setFocusableInTouchMode(true);
                 tvfrecuencia.setTextColor(Color.BLACK);
-                modificar.setVisibility(View.GONE);
                 guardarCambios.setVisibility(View.VISIBLE);
                 contenedorNombre.setVisibility(View.VISIBLE);
                 tvname.requestFocus();
+                modificar.setVisibility(View.INVISIBLE);
                 collapsingToolbarLayout.setFocusableInTouchMode(true);
 
             }
         });
+
 
         //Guardar cambios al modificar un medicamento
         guardarCambios=(Button)findViewById(R.id.btnGuardar);

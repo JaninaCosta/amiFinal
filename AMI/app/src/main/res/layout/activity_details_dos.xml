@@ -25,6 +25,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="10dp"/>
 
+
         <TextView
             android:id="@+id/lblName"
             android:layout_width="match_parent"
@@ -51,7 +52,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="550dp"
         android:layout_marginTop="-20dp">
 
         <!--dias-->
@@ -115,7 +116,7 @@
             android:textSize="22sp"
             android:layout_marginTop="185dp"
             android:layout_marginEnd="21dp"
-             />
+            />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -138,6 +139,29 @@
             android:textColor="#424242"
             android:layout_marginTop="255dp"
             android:layout_marginEnd="21dp" />
+        <EditText
+            android:id="@+id/frecuencia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="20dp"
+            android:inputType="number"
+            android:textSize="22sp"
+            android:textColor="#757575"
+            android:layout_marginTop="290dp"
+            android:layout_marginEnd="21dp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_frecuencias"
+            android:id="@+id/ic_frecuencia"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="270dp"
+            android:layout_marginLeft="25dp"
+            />
 
         <!--indicaciones-->
 
@@ -151,7 +175,7 @@
             android:textSize="23sp"
             android:textColor="#424242"
             android:layout_marginTop="360dp"
-             />
+            />
 
         <EditText
             android:id="@+id/indicaciones"
@@ -188,6 +212,20 @@
             android:id="@+id/button3" />-->
 
 
+        <Button
+            android:text="Guardar"
+            android:layout_width="150dp"
+            android:id="@+id/btnGuardar"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@android:color/white"
+            android:textSize="23sp"
+            android:fontFamily="sans-serif"
+            android:textAllCaps="false"
+            android:layout_height="75dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+
     </RelativeLayout>
 
     <android.support.design.widget.AppBarLayout
@@ -197,19 +235,6 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
     </android.support.design.widget.AppBarLayout>
-
-    <Button
-        android:text="Guardar"
-        android:layout_width="match_parent"
-        android:id="@+id/btnGuardar"
-        android:backgroundTint="@color/colorAccent"
-        android:textColor="@android:color/white"
-        android:textSize="23sp"
-        android:fontFamily="sans-serif"
-        android:textAllCaps="false"
-        android:layout_height="75dp"
-        android:layout_below="@+id/frecuencia"
-        android:layout_centerHorizontal="true" />
 
 
 </LinearLayout>
