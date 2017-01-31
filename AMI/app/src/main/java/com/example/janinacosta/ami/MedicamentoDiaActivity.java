@@ -18,7 +18,7 @@ import java.util.List;
 
 public class MedicamentoDiaActivity extends AppCompatActivity {
     DatabaseHelpher helpher;
-    List<MedicamentoModel> dbList;
+    List<MedicamentoModel>dbList;
     RecyclerView mRecyclerView;
 
     private RecyclerView.Adapter mAdapter;

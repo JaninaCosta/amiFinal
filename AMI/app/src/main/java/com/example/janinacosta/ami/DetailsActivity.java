@@ -16,6 +16,8 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -41,8 +43,9 @@ import java.util.List;
 
 public class DetailsActivity extends AppCompatActivity {
     //data
-    DatabaseHelpher helpher;
+    DatabaseHelpher helpher,helpher2;
     List<MedicamentoModel> dbList;
+    List<AlarmaModel>  dbList2;
     int position;
     TextView tvname,tvdosis, tvnumdias, tvindicaciones, tvfrecuencia;
     RelativeLayout contenedorNombre;
@@ -52,6 +55,12 @@ public class DetailsActivity extends AppCompatActivity {
     Handler h;
     final String NOMBRE_BASEDATOS = "AppmedAlarma.db";
 
+    //********************************LISTA ALARMAS  **********************************
+    //LinearLayout layout_horas;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    //******************************************************************
 
     //collapsing
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
@@ -64,6 +73,29 @@ public class DetailsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_btn_atras_fondo);
         setSupportActionBar(toolbar);
+
+        //********************************************LISTA DE ALARMAS*************************************
+
+        //recycler
+
+        helpher2 = new DatabaseHelpher(this);
+        dbList2 = new ArrayList<AlarmaModel>();
+        //dbList2 = helpher.getTodasAlarmas();
+
+
+        /*
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycleviewhora);
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mAdapter = new HorasAdapter(DetailsActivity.this, dbList2);
+        mRecyclerView.setAdapter(mAdapter);
+        */
+
+        //*****************************************************************************************
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();

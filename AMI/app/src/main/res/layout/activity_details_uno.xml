@@ -68,8 +68,6 @@
             android:paddingTop="10dp"
             android:weightSum="1">
 
-
-
             <include layout="@layout/activity_details_dos" />
         </LinearLayout>
 

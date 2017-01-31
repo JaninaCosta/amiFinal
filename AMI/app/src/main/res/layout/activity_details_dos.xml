@@ -52,8 +52,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:layout_marginTop="-20dp">
+        android:layout_marginTop="-20dp"
+        android:layout_height="600dp">
 
         <!--dias-->
 
@@ -201,17 +201,6 @@
 
 
 
-
-
-        <!--<Button
-            android:text="modificar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/button3" />-->
-
-
         <Button
             android:text="Guardar"
             android:layout_width="150dp"
@@ -225,16 +214,28 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
 
-
     </RelativeLayout>
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
+    <!--
+    <LinearLayout
+        android:id="@+id/layout_horas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-    </android.support.design.widget.AppBarLayout>
-
+        android:orientation="vertical"
+        android:layout_marginTop="220dp"
+        android:weightSum="1"
+        android:layout_height="307dp"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:text="Lista de alarmas del día"/>
+        <include
+            layout="@layout/activity_recycler_horas" />
+    </LinearLayout>
+    -->
 
 </LinearLayout>

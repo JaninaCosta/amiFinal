@@ -10,7 +10,7 @@
         android:id="@+id/lbl_hora_inicial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="120dp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="70dp">
 
@@ -32,21 +32,21 @@
         android:id="@+id/ic_alarma"
         android:layout_marginRight="30dp"
         android:layout_marginStart="19dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="142dp"
         android:layout_marginLeft="20dp"
         android:layout_weight="1"/>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/lbl_frecuencia"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="40dp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="70dp">
 
         <EditText
             android:id="@+id/txt_frecuencia"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:contextClickable="false"
             android:inputType="number"
@@ -61,18 +61,8 @@
         android:id="@+id/ic_dia"
         android:layout_marginStart="19dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="130dp"/>
+        android:layout_marginTop="60dp"/>
 
-
-
-    <TextView
-        android:text="Horas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/ic_dia"
-        android:layout_toEndOf="@+id/lbl_frecuencia"
-        android:id="@+id/textView4"
-        android:textSize="21sp" />
 
     <LinearLayout
         android:id="@+id/layout_horas"
@@ -89,12 +79,20 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textSize="20sp"
-            android:text="Lista de alarmas del día"/>
+            android:text="Alarmas del día"/>
         <include
             layout="@layout/activity_recycler_horas" />
     </LinearLayout>
 
-
+    <TextView
+        android:text="Horas"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:layout_marginRight="5dp"
+        android:id="@+id/textView7"
+        android:layout_alignEnd="@+id/lbl_hora_inicial" />
 
 
 </RelativeLayout>
