@@ -3,7 +3,7 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="600dp">
+    android:layout_height="wrap_content">
 
 
     <android.support.design.widget.TextInputLayout
@@ -64,15 +64,6 @@
         android:layout_marginTop="130dp"/>
 
 
-    <!--<TextView
-        android:text="horas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView7"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:id="@+id/txt_lista_horas"
-        android:textSize="23sp" />-->
 
     <TextView
         android:text="Horas"
@@ -83,44 +74,27 @@
         android:id="@+id/textView4"
         android:textSize="21sp" />
 
-    <TextView
-        android:text="Alarmas programadas del día"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView7"
-        android:textSize="23sp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="13dp"
-        android:layout_below="@+id/lbl_frecuencia"
-        android:layout_alignEnd="@+id/lbl_hora_inicial" />
-
     <LinearLayout
         android:id="@+id/layout_horas"
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="-40dp"
+        android:layout_marginTop="220dp"
         android:weightSum="1"
-        android:layout_height="280dp"
-        android:layout_below="@+id/textView7"
+        android:layout_height="307dp"
         android:layout_alignParentStart="true"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
-        <include layout="@layout/activity_recycler_horas" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:text="Lista de alarmas del día"/>
+        <include
+            layout="@layout/activity_recycler_horas" />
     </LinearLayout>
 
-    <Button
-        android:text="Guardar"
-        android:layout_width="150dp"
-        android:layout_height="75dp"
-        android:id="@+id/btnCrearMedicamento"
-        android:backgroundTint="@color/colorAccent"
-        android:textColor="@android:color/white"
-        android:textSize="23sp"
-        android:textAllCaps="false"
-        android:fontFamily="sans-serif"
-        android:layout_below="@+id/layout_horas"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="31dp" />
+
 
 
 </RelativeLayout>

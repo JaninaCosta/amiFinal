@@ -52,6 +52,20 @@
             android:weightSum="1"
             android:layout_height="500dp">
             <include layout="@layout/activity_crear_alarma_dos" />
+
+            <Button
+                android:text="Guardar"
+                android:layout_width="150dp"
+                android:id="@+id/btnCrearMedicamento"
+                android:layout_below="@+id/layout_horas"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/colorAccent"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="70dp"
+                android:textSize="23sp"
+                android:fontFamily="sans-serif"
+                android:textAllCaps="false"
+                android:layout_height="75dp"/>
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

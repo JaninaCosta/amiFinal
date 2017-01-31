@@ -23,6 +23,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -37,6 +38,8 @@ public class ActividadCrearAlarma extends AppCompatActivity {
     private String string_hora, string_minutos;
     private int frecuencia_horas;
     private int hora, minutos;
+
+    LinearLayout layout_horas;
 
     //data recyccler
     private RecyclerView mRecyclerView;
@@ -71,6 +74,8 @@ public class ActividadCrearAlarma extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_alarma);
+        layout_horas = (LinearLayout) findViewById(R.id.layout_horas);
+        layout_horas.setVisibility(View.GONE);
 
        listaHoras= new ArrayList<AlarmaModel>();
 
@@ -245,6 +250,8 @@ public class ActividadCrearAlarma extends AppCompatActivity {
                 minutos= tp_horaInicial.getCurrentMinute();
                 String hour_string = String.valueOf(hora);
                 String minute_string = String.valueOf(minutos);
+
+                layout_horas.setVisibility(View.VISIBLE);
 
                 String am_pm="";
 
