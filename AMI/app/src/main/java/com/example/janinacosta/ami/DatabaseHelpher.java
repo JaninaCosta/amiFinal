@@ -182,6 +182,7 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
         db.close();
     }*/
 
+    //Devuelve medicamento buscandolo por el ID
     public AlarmaModel get_alarma (int idAlarma){
 
         String query_alarma = "select * from alarma where idAlarma="+idAlarma;
@@ -195,13 +196,6 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
         Log.e("ALARMA UNICA: ", ""+idAlarma);
         return model;
     }
-
-
-    /*Campos de la tabla Alarma_Medicamento*/
-    /*
-    static final String idmed_alarma="idmed_alarma";
-    static final String fkAlarma = "fkAlarma";
-    static final String fkMedicamento  = "fkMedicamento";*/
 
     //Obtener lista de alarma de un medicamento
     public ArrayList<AlarmaModel> lista_alarmas (int idMedi){
@@ -220,5 +214,8 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
         }
         return lista;
     }
+
+    //Alarmas del día
+
 
 }

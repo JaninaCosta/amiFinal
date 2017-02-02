@@ -10,7 +10,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="97dp"
+        android:layout_height="106dp"
         android:padding="4dp"
         android:background="?android:selectableItemBackground"
         android:layout_margin="7dp">
@@ -74,16 +74,14 @@
             android:layout_toEndOf="@+id/hora2"
             android:id="@+id/fm" />
 
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
+        <TextView
+            android:text="2/10 dosis tomadas"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_below="@+id/hora1"
-            android:layout_alignStart="@+id/hora1"
-            android:id="@+id/progressBar"
-            android:minHeight="30dp"
-            android:maxHeight="30dp"
-            android:scrollbarSize="30dp" />
+            android:layout_height="wrap_content"
+            android:textSize="21sp"
+            android:id="@+id/progreso"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/hora1" />
 
     </RelativeLayout>
 

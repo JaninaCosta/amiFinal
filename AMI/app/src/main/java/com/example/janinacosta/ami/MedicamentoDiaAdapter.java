@@ -67,7 +67,7 @@ public class MedicamentoDiaAdapter  extends RecyclerView.Adapter<MedicamentoDiaA
             hora1 = (TextView)itemLayoutView .findViewById(R.id.hora1);
             hora2 = (TextView)itemLayoutView .findViewById(R.id.hora2);
             fm = (TextView)itemLayoutView .findViewById(R.id.fm);
-            progreso = (ProgressBar) itemLayoutView.findViewById(R.id.progressBar);
+            //progreso = (ProgressBar) itemLayoutView.findViewById(R.id.progressBar);
             verDetalle = (Button)itemLayoutView .findViewById(R.id.btnVerDetalled2);
             itemLayoutView.setOnClickListener(this);
             Random generadorAleatorios = new Random();
@@ -81,8 +81,8 @@ public class MedicamentoDiaAdapter  extends RecyclerView.Adapter<MedicamentoDiaA
                 fm.setText("PM");
             }
 
-            progreso.setMax(20);
-            progreso.setProgress(3);
+            //progreso.setMax(20);
+            //progreso.setProgress(3);
 
             verDetalle.setOnClickListener(new View.OnClickListener(){
 
