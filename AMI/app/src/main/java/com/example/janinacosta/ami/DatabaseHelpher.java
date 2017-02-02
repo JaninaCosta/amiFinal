@@ -126,8 +126,8 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
 
     /* Obtener todos los medicamentos de la base para el recycler */
 
-    public List<MedicamentoModel> getDataFromDB(){
-        List<MedicamentoModel> modelList = new ArrayList<MedicamentoModel>();
+    public ArrayList<MedicamentoModel> getDataFromDB(){
+        ArrayList<MedicamentoModel> modelList = new ArrayList<MedicamentoModel>();
         String query = "select * from medicamentos";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query,null);
@@ -149,8 +149,9 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
 
     /* Obtener todos los medicamentos de la base para el recycler */
 
-    public List<AlarmaModel> getTodasAlarmas(){
-        List<AlarmaModel> modelList = new ArrayList<AlarmaModel>();
+    public ArrayList<AlarmaModel> getTodasAlarmas(){
+        Log.e("ENTRANDO", "PORQUE NO ENTRAAAA");
+        ArrayList<AlarmaModel> modelList = new ArrayList<AlarmaModel>();
         String query = "select * from alarma";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query,null);
@@ -160,7 +161,6 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
                 modelList.add(model);
             }while (cursor.moveToNext());
         }
-
         return modelList;
     }
 
@@ -181,5 +181,44 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
         db.delete(MEDICAMENTOS_TABLE, "name" + " = ?", new String[] { nombreMedicamento });
         db.close();
     }*/
+
+    public AlarmaModel get_alarma (int idAlarma){
+
+        String query_alarma = "select * from alarma where idAlarma="+idAlarma;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query_alarma,null);
+        AlarmaModel model = new AlarmaModel(0,0,0);
+        if(cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            model = new AlarmaModel(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2));
+        }
+        Log.e("ALARMA UNICA: ", ""+idAlarma);
+        return model;
+    }
+
+
+    /*Campos de la tabla Alarma_Medicamento*/
+    /*
+    static final String idmed_alarma="idmed_alarma";
+    static final String fkAlarma = "fkAlarma";
+    static final String fkMedicamento  = "fkMedicamento";*/
+
+    //Obtener lista de alarma de un medicamento
+    public ArrayList<AlarmaModel> lista_alarmas (int idMedi){
+
+        Log.e("ID MEDICAMENTOO: ",""+idMedi);
+
+        ArrayList<AlarmaModel> lista = new ArrayList<AlarmaModel>();
+        String query_alarma = "select * from med_alarma where fkMedicamento="+idMedi;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query_alarma,null);
+        if (cursor.moveToFirst()){
+            do {
+                AlarmaModel model = get_alarma(cursor.getInt(1));
+                lista.add(model);
+            }while (cursor.moveToNext());
+        }
+        return lista;
+    }
 
 }

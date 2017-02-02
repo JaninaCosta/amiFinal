@@ -141,6 +141,7 @@ public class ActividadCrearAlarma extends AppCompatActivity {
                     helpher.insert_alarma_medi(id_alarma,id_medi);
 
                 }
+                Log.e("TODAS: ", ""+helpher.getTodasAlarmas().size());
 
                 //Alarma iniciando
                 calendar.set(Calendar.HOUR_OF_DAY, alarma_inicial.getHora());

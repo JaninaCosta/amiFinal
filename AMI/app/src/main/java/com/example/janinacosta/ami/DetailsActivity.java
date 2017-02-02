@@ -44,8 +44,8 @@ import java.util.List;
 public class DetailsActivity extends AppCompatActivity {
     //data
     DatabaseHelpher helpher,helpher2;
-    List<MedicamentoModel> dbList;
-    List<AlarmaModel>  dbList2;
+    ArrayList<MedicamentoModel> dbList;
+    ArrayList<AlarmaModel>  dbList2;
     int position;
     TextView tvname,tvdosis, tvnumdias, tvindicaciones, tvfrecuencia;
     RelativeLayout contenedorNombre;
@@ -74,28 +74,6 @@ public class DetailsActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(R.drawable.ic_btn_atras_fondo);
         setSupportActionBar(toolbar);
 
-        //********************************************LISTA DE ALARMAS*************************************
-
-        //recycler
-
-        helpher2 = new DatabaseHelpher(this);
-        dbList2 = new ArrayList<AlarmaModel>();
-        //dbList2 = helpher.getTodasAlarmas();
-
-
-        /*
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycleviewhora);
-        mRecyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        mAdapter = new HorasAdapter(DetailsActivity.this, dbList2);
-        mRecyclerView.setAdapter(mAdapter);
-        */
-
-        //*****************************************************************************************
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -122,6 +100,29 @@ public class DetailsActivity extends AppCompatActivity {
         },1000);
         //fin hilos
 
+
+        //********************************************LISTA DE ALARMAS*************************************
+
+        //recycler
+
+        helpher2 = new DatabaseHelpher(this);
+        dbList2 = new ArrayList<AlarmaModel>();
+        AlarmaModel alarma_medi = helpher2.getTodasAlarmas().get(position);
+        dbList2 = helpher2.lista_alarmas(alarma_medi.getId_alarma());
+
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycleviewhora);
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mAdapter = new HorasAdapter(DetailsActivity.this, dbList2);
+        mRecyclerView.setAdapter(mAdapter);
+
+
+        //*****************************************************************************************
 
 
         //esto es para que al abrir los detalles salgan desactivados los campos, sÃ³lo lectura

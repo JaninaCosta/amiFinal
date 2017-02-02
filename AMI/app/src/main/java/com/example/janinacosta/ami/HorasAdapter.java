@@ -21,11 +21,11 @@ import java.util.Random;
 
 public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.HolderHoras>{
     //data
-    static List<AlarmaModel> dbList;
+    static ArrayList<AlarmaModel> dbList;
     static Context context;
     final String NOMBRE_BASEDATOS = "AppmedAlarma.db";
 
-    public HorasAdapter(Context context, List<AlarmaModel> dbList){
+    public HorasAdapter(Context context, ArrayList<AlarmaModel> dbList){
         this.dbList = new ArrayList<AlarmaModel>();
         this.context = context;
         this.dbList = dbList;
@@ -77,8 +77,6 @@ public class HorasAdapter extends RecyclerView.Adapter<HorasAdapter.HolderHoras>
             horas = (TextView) itemLayoutView .findViewById(R.id.horas);
             btnModiHora = (Button) itemLayoutView .findViewById(R.id.btnModiHora);
             itemLayoutView.setOnClickListener(this);
-
-
         }
 
         @Override

@@ -49,11 +49,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
                             intent = new Intent (v.getContext(),MisMedicamentosActivity.class );
                             v.getContext().startActivity(intent);
                             break;
-                        /*
+
                         case 2:
-                            intent = new Intent (v.getContext(),ActividadHistorial.class );
+                            intent = new Intent (v.getContext(),ActividadRecetas.class );
                             v.getContext().startActivity(intent);
-                            break;*/
+                            break;
                         case 3:
                             intent = new Intent (v.getContext(),ActividadLogin.class );
                             v.getContext().startActivity(intent);
