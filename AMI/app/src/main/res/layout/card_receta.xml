@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="1dp"
+    android:orientation="horizontal"
+    card_view:cardCornerRadius="1dp"
+    card_view:cardUseCompatPadding="true" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:background="?android:selectableItemBackground"
+        android:layout_margin="7dp">
+
+
+        <TextView
+            android:id="@+id/nombre_receta"
+            android:layout_width="wrap_content"
+            android:gravity="left"
+            android:padding="10dp"
+
+            android:text="Name"
+            android:textSize="22sp"
+            android:textColor="@android:color/black"
+            android:layout_height="55dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+
+        <Button
+            android:text="Ver Receta"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnVerReceta"
+            android:textColor="#424242"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_width="110dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:srcCompat="@android:drawable/ic_menu_camera"
+            android:layout_below="@+id/nombre_receta"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/img_receta"
+            android:layout_height="200dp" />
+
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
