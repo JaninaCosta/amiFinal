@@ -3,15 +3,16 @@ package com.example.janinacosta.ami;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,11 +28,15 @@ public class ActividadRecetas extends AppCompatActivity {
     private final String ruta_fotos = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/misfotos/";
     private File file = new File(ruta_fotos);
     private Button boton;
+    private String nombre_foto;
+    private static final int CAMERA_REQUEST = 1888;
+    //helper
+    DatabaseHelpher helpher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recetas);
+        setContentView(R.layout.activity_recetas2);
 
         //======== codigo nuevo ========
            boton = (Button) findViewById(R.id.btnTomaFoto);
@@ -42,7 +47,7 @@ public class ActividadRecetas extends AppCompatActivity {
 
                         @Override
                 public void onClick(View v) {
-                     String file = ruta_fotos + getCode() + ".jpg";
+                     String file = ruta_fotos + getCode()+ ".jpg";
                      File mi_foto = new File( file );
                      try {
                          mi_foto.createNewFile();
@@ -55,8 +60,15 @@ public class ActividadRecetas extends AppCompatActivity {
                       Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                       //Guarda imagen
                       cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+                      //cameraIntent.putExtra("data", "valoooooor");
+                      Log.e("MEDIA:"+MediaStore.EXTRA_OUTPUT,uri.toString());
+
+                      //Guarda en la base
+                      helpher = new DatabaseHelpher(ActividadRecetas.this);
+                      helpher.insert_receta("Receta1",file);
                       //Retorna a la actividad
                       startActivityForResult(cameraIntent, 0);
+
                     }
 
            });
@@ -73,8 +85,32 @@ public class ActividadRecetas extends AppCompatActivity {
      {
        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyymmddhhmmss");
        String date = dateFormat.format(new Date() );
-       String photoCode = "pic_" + date;
-       return photoCode;
+       nombre_foto = "pic_" + date;
+       return nombre_foto;
      }
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //Log.e("EXTRA: ","ANTES DE ENTRAR");
+        if (requestCode == 0) {
+            //mostrar imagen
+            //ImageView jpgView = (ImageView)findViewById(R.id.image_receta);
+            //Bitmap bitmap = BitmapFactory.decodeFile(ruta_fotos+"/img.jpg");
+            //Log.e("DIRECTORIO", file);
+            //jpgView.setImageBitmap(bitmap);
+            //Log.e("EXTRA: ",data.getExtras().get("data").toString());
+            //Bitmap theImage = (Bitmap) data.getExtras().get("data");
+            //jpgView .setImageBitmap(theImage);
+
+            //Obtener id receta
+            RecetaModel receta = helpher.getTodasRecetas().get(helpher.getTodasRecetas().size()-1);
+            String urlFoto=receta.getUrlFoto();
+
+            //Mostrar imagen
+            ImageView jpgView = (ImageView)findViewById(R.id.image_receta);
+            Bitmap bitmap = BitmapFactory.decodeFile(urlFoto);
+            Log.e("DIRECTORIO", urlFoto);
+            jpgView.setImageBitmap(bitmap);
+
+        }
+    }
 }

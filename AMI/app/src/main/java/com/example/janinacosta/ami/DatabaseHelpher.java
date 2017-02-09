@@ -17,8 +17,11 @@ import java.util.List;
 
 public class DatabaseHelpher extends SQLiteOpenHelper {
     private static final String DATABASE_NAME="AppmedAlarma";
-    private static final int DATABASE_VERSION = 1;
-    //private static final String MEDICAMENTOS_TABLE = "medicamentos";
+    private static final int DATABASE_VERSION = 2;
+    private static final String NAME_MEDICAMENTO = "medicamentos";
+    private static final String NAME_ALARMA = "alarma";
+    private static final String NAME_MEDI_ALARMA = "med_alarma";
+    private static final String NAME_RECETA = "receta";
 
     /*Campos de la tabla Medicamentos*/
     static final String idMedicamento="idMedicamento";
@@ -32,6 +35,15 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
     static final String idAlarma="idAlarma";
     static final String hora = "hora";
     static final String min  = "min";
+
+    /*Campos de la tabla Receta*/
+    static final String idReceta="idReceta";
+    static final String nombreReceta = "nombreReceta";
+    /*
+    static final String descripcion  = "descripcion";
+    static final String fecha  = "fecha";
+    static final String medico  = "medico";*/
+    static final String urlFoto  = "urlFoto";
 
     /*Campos de la tabla Alarma_Medicamento*/
     static final String idmed_alarma="idmed_alarma";
@@ -67,6 +79,13 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
             + fkMedicamento + " INTEGER, "
             + "UNIQUE (idmed_alarma))";
 
+    /*Tabla de Receta*/
+    private static final String RECETA_TABLE = "create table receta" +
+            "(" + idReceta + " INTEGER primary key autoincrement, "
+            + nombreReceta + " TEXT , "
+            + urlFoto + " TEXT, "
+            + "UNIQUE (idReceta))";
+
 
     //constructor de la clase
     public DatabaseHelpher(Context context) {
@@ -79,6 +98,7 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
         db.execSQL(MED_TABLE);
         db.execSQL(ALARMA_TABLE);
         db.execSQL(MED_ALARMA_TABLE);
+        db.execSQL(RECETA_TABLE);
     }
 
 
@@ -110,7 +130,7 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
     }
 
 
-    /** Insertar una alarma **/
+    /** Insertar una alarma_medi **/
     public void insert_alarma_medi(int fk_alarma , int fk_medi){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -123,6 +143,18 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
 
     }
 
+    /** Insertar una receta**/
+    public void insert_receta(String nombreReceta, String urlFoto){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("nombreReceta", nombreReceta);
+        values.put("urlFoto", urlFoto);
+        db.insert("receta", null, values);
+        db.close();
+        Log.e("Receta:", "idReceta: "+idReceta+ " urlFoto: "+urlFoto );
+        //Toast.makeText(context, "Alarma configurada con éxito", Toast.LENGTH_LONG);
+
+    }
 
     /* Obtener todos los medicamentos de la base para el recycler */
 
@@ -150,7 +182,6 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
     /* Obtener todos los medicamentos de la base para el recycler */
 
     public ArrayList<AlarmaModel> getTodasAlarmas(){
-        Log.e("ENTRANDO", "PORQUE NO ENTRAAAA");
         ArrayList<AlarmaModel> modelList = new ArrayList<AlarmaModel>();
         String query = "select * from alarma";
         SQLiteDatabase db = this.getWritableDatabase();
@@ -164,11 +195,30 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
         return modelList;
     }
 
+    /* Obtener todos las recetas de la base */
+
+    public ArrayList<RecetaModel> getTodasRecetas(){
+        ArrayList<RecetaModel> modelList = new ArrayList<RecetaModel>();
+        String query = "select * from receta";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+        if (cursor.moveToFirst()){
+            do {
+                RecetaModel model = new RecetaModel(cursor.getInt(0),cursor.getString(1),cursor.getString(2));
+                modelList.add(model);
+            }while (cursor.moveToNext());
+        }
+        return modelList;
+    }
+
     //metodo para actualizar
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS "+ MED_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS "+ NAME_ALARMA);
+        db.execSQL("DROP TABLE IF EXISTS "+ NAME_MEDI_ALARMA);
+        db.execSQL("DROP TABLE IF EXISTS "+ NAME_MEDICAMENTO);
+        db.execSQL("DROP TABLE IF EXISTS "+ NAME_RECETA);
         onCreate(db);
     }
 
@@ -194,6 +244,21 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
             model = new AlarmaModel(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2));
         }
         Log.e("ALARMA UNICA: ", ""+idAlarma);
+        return model;
+    }
+
+    //Devuelve medicamento buscandolo por el ID
+    public RecetaModel get_Receta (int idReceta){
+
+        String query_alarma = "select * from receta where idReceta="+idReceta;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query_alarma,null);
+        RecetaModel model = new RecetaModel(0,"","");
+        if(cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            model = new RecetaModel(cursor.getInt(0),cursor.getString(1),cursor.getString(2));
+        }
+        Log.e("Receta : ", ""+idReceta);
         return model;
     }
 

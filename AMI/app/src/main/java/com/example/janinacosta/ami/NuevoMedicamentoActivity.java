@@ -89,9 +89,6 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
         spinnerLb = (MaterialBetterSpinner)findViewById(R.id.spinnerLb);
         spinnerLb.setAdapter(arrayAdapter2);
 
-
-
-
         btnSiguiente  =(Button)findViewById(R.id.btnSiguiente);
 
 
