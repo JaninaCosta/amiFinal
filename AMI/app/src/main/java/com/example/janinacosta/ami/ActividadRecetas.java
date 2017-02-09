@@ -9,7 +9,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,6 +21,7 @@ import android.widget.ImageView;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -33,11 +38,41 @@ public class ActividadRecetas extends AppCompatActivity {
     //helper
     DatabaseHelpher helpher;
 
+    //data recyccler
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
+    ArrayList<RecetaModel> listaRecetas;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recetas2);
+        setContentView(R.layout.activity_recetas);
 
+        //toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_btn_atras_fondo);
+        setSupportActionBar(toolbar);
+
+        /////// RECYCLER ////////////
+        //recycler
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycleviewReceta);
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        helpher = new DatabaseHelpher(ActividadRecetas.this);
+        listaRecetas = helpher.getTodasRecetas();
+        Log.e("RECETA SIZE", ""+listaRecetas.size());
+        // specify an adapter (see also next example)
+        mAdapter = new RecetaAdapter(ActividadRecetas.this, listaRecetas);
+        mRecyclerView.setAdapter(mAdapter);
+
+        /// FIN RECYCLER
+/*
         //======== codigo nuevo ========
            boton = (Button) findViewById(R.id.btnTomaFoto);
            //Si no existe crea la carpeta donde se guardaran las fotos
@@ -73,7 +108,7 @@ public class ActividadRecetas extends AppCompatActivity {
 
            });
            //====== codigo nuevo:end ======
-
+*/
     }
 
     /**
@@ -88,7 +123,7 @@ public class ActividadRecetas extends AppCompatActivity {
        nombre_foto = "pic_" + date;
        return nombre_foto;
      }
-
+/*
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //Log.e("EXTRA: ","ANTES DE ENTRAR");
         if (requestCode == 0) {
@@ -111,6 +146,14 @@ public class ActividadRecetas extends AppCompatActivity {
             Log.e("DIRECTORIO", urlFoto);
             jpgView.setImageBitmap(bitmap);
 
+
+
         }
+    }*/
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        return super.onOptionsItemSelected(item);
     }
 }

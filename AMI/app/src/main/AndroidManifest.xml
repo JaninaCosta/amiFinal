@@ -59,7 +59,10 @@
             android:label="@string/title_dia"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".ActividadRecetas"></activity>
+            android:name=".ActividadRecetas"
+            android:label="@string/title_activity_Receta"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
 
     </application>
 

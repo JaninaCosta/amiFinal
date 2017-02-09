@@ -1,6 +1,8 @@
 package com.example.janinacosta.ami;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,8 +33,8 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecetaAdapter.HolderRece
 
     @Override
     public RecetaAdapter.HolderReceta onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemLayoutView3 = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_receta, null);
-        RecyclerView.ViewHolder viewHolder = new RecetaAdapter.HolderReceta(itemLayoutView3);
+        View itemLayoutView4 = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_receta, null);
+        RecyclerView.ViewHolder viewHolder = new RecetaAdapter.HolderReceta(itemLayoutView4);
         return (RecetaAdapter.HolderReceta) viewHolder;
     }
 
@@ -41,12 +43,17 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecetaAdapter.HolderRece
         String nombreReceta =dbList.get(position).getNombreReceta();
         String urlFoto= dbList.get(position).getUrlFoto();
 
+        holder.nombre_receta.setText(nombreReceta);
+
+        //Imagen receta
+        Bitmap bitmap = BitmapFactory.decodeFile(urlFoto);
+        holder.img_receta.setImageBitmap(bitmap);
         //holder.horas.setText(""+hour_string + ":" + minute_string+" "+am_pm);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return dbList.size();
     }
 
     public class HolderReceta extends RecyclerView.ViewHolder implements View.OnClickListener{
