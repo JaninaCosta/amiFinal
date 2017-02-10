@@ -282,5 +282,26 @@ public class DatabaseHelpher extends SQLiteOpenHelper {
 
     //Alarmas del día
 
+    public void actualizarUltimaRecetaFoto(String url){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("urlFoto", url);
+        RecetaModel ultima = getTodasRecetas().get(getTodasRecetas().size()-1);
+        Log.e("ID RECETA ULTIMA", "FOTO "+ultima.getIdReceta());
+        db.update(NAME_RECETA, values, "idReceta='"+ultima.getIdReceta()+"'", null);
+
+
+    }
+
+    public void actualizarUltimaRecetaNombre(String nombre){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("nombreReceta", nombre);
+        RecetaModel ultima = getTodasRecetas().get(getTodasRecetas().size()-1);
+        Log.e("ID RECETA ULTIMA", "NOMBRE "+ultima.getIdReceta());
+        db.update(NAME_RECETA, values, "idReceta='"+ultima.getIdReceta()+"'", null);
+
+    }
+
 
 }

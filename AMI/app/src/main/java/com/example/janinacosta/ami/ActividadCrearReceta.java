@@ -1,6 +1,7 @@
 package com.example.janinacosta.ami;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -30,14 +31,12 @@ import java.util.Date;
  */
 
 public class ActividadCrearReceta extends AppCompatActivity {
-    private final String ruta_fotos = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/misfotos/";
+    private final String ruta_fotos = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/MisRecetas/";
     private File file = new File(ruta_fotos);
     private Button boton, guardar;
     private EditText nombreReceta;
     private String nombre_foto;
     private ArrayList<RecetaModel> lista_receta= new ArrayList<RecetaModel>();
-    private ArrayList<String> rutas_img =new ArrayList<String>() ;
-    private static final int CAMERA_REQUEST = 1888;
     private int size_receta, idReceta;
 
     //helper
@@ -62,10 +61,9 @@ public class ActividadCrearReceta extends AppCompatActivity {
         helpher = new DatabaseHelpher(ActividadCrearReceta.this);
         lista_receta=helpher.getTodasRecetas();
         size_receta=lista_receta.size();
-        if (size_receta>0){  idReceta= helpher.get_Receta(size_receta-1).getIdReceta();}
+        //if (size_receta>0){  idReceta= helpher.get_Receta(size_receta).getIdReceta();}
+        //Log.e("ID RECETA PENULTIMO", ""+idReceta+" size: "+size_receta);
 
-        //Inciializa lista rutas
-        //rutas_img=new ArrayList<String>();
 
         //TextView nombre receta
         nombreReceta= (EditText)findViewById(R.id.txt_nombreReceta);
@@ -92,17 +90,20 @@ public class ActividadCrearReceta extends AppCompatActivity {
                 Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 //Guarda imagen
                 cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-                //cameraIntent.putExtra("data", "valoooooor");
+
                 Log.e("MEDIA:" + MediaStore.EXTRA_OUTPUT, uri.toString());
 
-                //Log.e("recetas" , "anterior"+lista_receta.size());
-
-                //Guarda en la base
                 helpher = new DatabaseHelpher(ActividadCrearReceta.this);
-                helpher.insert_receta(nombreReceta.getText().toString(),file);
+                Log.e("recetas" , "anterior"+lista_receta.size()+"ahora: "+helpher.getTodasRecetas().size());
 
-                //Añadir a la lista las rutas
-                //rutas_img.add(file);
+                if (size_receta==helpher.getTodasRecetas().size()){
+                    //Guarda en la base
+                    Log.e("ENTR NUEVA", "INSEERTAR");
+                    helpher.insert_receta(nombreReceta.getText().toString(),file);
+                }else{
+                    Log.e("ACTUALIZAR", "DEBE ACTUALIZAE");
+                    helpher.actualizarUltimaRecetaFoto(file);
+                }
 
                 //Retorna a la actividad
                 startActivityForResult(cameraIntent, 0);
@@ -119,10 +120,9 @@ public class ActividadCrearReceta extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Guarda en la base
-                //helpher = new DatabaseHelpher(ActividadCrearReceta.this);
-                //helpher.insert_receta(nombreReceta.getText().toString(), rutas_img.get(rutas_img.size()-1));
-
-                EliminarRecetasTemporales();
+                helpher = new DatabaseHelpher(ActividadCrearReceta.this);
+               //Actualizo antes de guardar, cualquier cambio que se haya dado
+                helpher.actualizarUltimaRecetaNombre(nombreReceta.getText().toString());
                 Intent intent = new Intent (v.getContext(),ActividadRecetas.class );
                 v.getContext().startActivity(intent);
                 finish();
@@ -143,34 +143,18 @@ public class ActividadCrearReceta extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //Log.e("EXTRA: ","ANTES DE ENTRAR");
         if (requestCode == 0) {
-            //mostrar imagen
-            //ImageView jpgView = (ImageView)findViewById(R.id.image_receta);
-            //Bitmap bitmap = BitmapFactory.decodeFile(ruta_fotos+"/img.jpg");
-            //Log.e("DIRECTORIO", file);
-            //jpgView.setImageBitmap(bitmap);
-            //Log.e("EXTRA: ",data.getExtras().get("data").toString());
-            //Bitmap theImage = (Bitmap) data.getExtras().get("data");
-            //jpgView .setImageBitmap(theImage);
-            /*
-            //Guarda en la base
+            //BASE
             helpher = new DatabaseHelpher(ActividadCrearReceta.this);
 
-            helpher.insert_receta("Receta1", file);*/
             //Obtener id receta
-            //RecetaModel receta = helpher.getTodasRecetas().get(helpher.getTodasRecetas().size() - 1);
-            //String urlFoto = receta.getUrlFoto();
+            RecetaModel receta = helpher.getTodasRecetas().get(helpher.getTodasRecetas().size()-1);
+            String urlFoto = receta.getUrlFoto();
 
             //Mostrar imagen
             ImageView jpgView = (ImageView) findViewById(R.id.image_receta);
-            helpher = new DatabaseHelpher(ActividadCrearReceta.this);
-            int tamaño=helpher.getTodasRecetas().size();
-            Log.e("tamaño", ""+tamaño);
-            Log.e("recetas" , "anterior"+lista_receta.size());
-            if (size_receta>0) {
-                Bitmap bitmap = BitmapFactory.decodeFile(helpher.get_Receta(idReceta+(tamaño-size_receta)).getUrlFoto());
-                Log.e("DIRECTORIO", "" + helpher.get_Receta(tamaño - 1));
-                jpgView.setImageBitmap(bitmap);
-            }
+            Bitmap bitmap = BitmapFactory.decodeFile(urlFoto);
+            jpgView.setImageBitmap(bitmap);
+
 
 
         }
@@ -179,9 +163,9 @@ public class ActividadCrearReceta extends AppCompatActivity {
     public void EliminarRecetasTemporales(){
         helpher = new DatabaseHelpher(ActividadCrearReceta.this);
         SQLiteDatabase bd = helpher.getWritableDatabase();
-        int fin=helpher.getTodasRecetas().size()-size_receta-1;
+        int fin=helpher.get_Receta(helpher.getTodasRecetas().size()-1).getIdReceta();
         for (int i=idReceta+1;i<fin;i++){
-            int elimina=bd.delete("receta", "idReceta=" + i, null);
+            int elimina=bd.delete("receta", "idReceta='" + i+"'", null);
             Log.e("ID RECETA", ""+i);
             if (elimina>1) Log.e("ELIMINO", "SI ELIMINOOOO");
         }
