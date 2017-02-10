@@ -1,6 +1,7 @@
 package com.example.janinacosta.ami;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,6 +9,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,17 +27,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static com.example.janinacosta.ami.MisMedicamentosActivity.TRANSITION_FAB;
+
 /**
  * Created by Sianna-chan on 01/02/2017.
  */
 
 public class ActividadRecetas extends AppCompatActivity {
 
-    private final String ruta_fotos = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/misfotos/";
-    private File file = new File(ruta_fotos);
-    private Button boton;
-    private String nombre_foto;
-    private static final int CAMERA_REQUEST = 1888;
+    //FloatingActionButton fab;
+    Button fab_receta;
     //helper
     DatabaseHelpher helpher;
 
@@ -72,84 +74,24 @@ public class ActividadRecetas extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
         /// FIN RECYCLER
-/*
-        //======== codigo nuevo ========
-           boton = (Button) findViewById(R.id.btnTomaFoto);
-           //Si no existe crea la carpeta donde se guardaran las fotos
-           file.mkdirs();
-           //accion para el boton
-           boton.setOnClickListener(new View.OnClickListener() {
 
-                        @Override
-                public void onClick(View v) {
-                     String file = ruta_fotos + getCode()+ ".jpg";
-                     File mi_foto = new File( file );
-                     try {
-                         mi_foto.createNewFile();
-                     } catch (IOException ex) {
-                         Log.e("ERROR ", "Error:" + ex);
-                     }
-                      //
-                      Uri uri = Uri.fromFile( mi_foto );
-                      //Abre la camara para tomar la foto
-                      Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                      //Guarda imagen
-                      cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-                      //cameraIntent.putExtra("data", "valoooooor");
-                      Log.e("MEDIA:"+MediaStore.EXTRA_OUTPUT,uri.toString());
+        //Boton nueva receta
+        fab_receta = (Button) findViewById(R.id.fab_receta);
+        fab_receta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Pair<View, String> pair = Pair.create(view.findViewById(R.id.fab_receta),TRANSITION_FAB);
+                ActivityOptionsCompat op;
+                Activity act = ActividadRecetas.this;
+                op = ActivityOptionsCompat.makeSceneTransitionAnimation(act, pair);
 
-                      //Guarda en la base
-                      helpher = new DatabaseHelpher(ActividadRecetas.this);
-                      helpher.insert_receta("Receta1",file);
-                      //Retorna a la actividad
-                      startActivityForResult(cameraIntent, 0);
-
-                    }
-
-           });
-           //====== codigo nuevo:end ======
-*/
+                Intent i = new Intent(act, ActividadCrearReceta.class);
+                act.startActivityForResult(i, mAdapter.getItemCount(), op.toBundle());
+                finish();
+            }
+        });
     }
 
-    /**
-     60  * Metodo privado que genera un codigo unico segun la hora y fecha del sistema
-     61  * @return photoCode
-     62  * */
-    @SuppressLint("SimpleDateFormat")
-     private String getCode()
-     {
-       SimpleDateFormat dateFormat = new SimpleDateFormat("yyyymmddhhmmss");
-       String date = dateFormat.format(new Date() );
-       nombre_foto = "pic_" + date;
-       return nombre_foto;
-     }
-/*
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //Log.e("EXTRA: ","ANTES DE ENTRAR");
-        if (requestCode == 0) {
-            //mostrar imagen
-            //ImageView jpgView = (ImageView)findViewById(R.id.image_receta);
-            //Bitmap bitmap = BitmapFactory.decodeFile(ruta_fotos+"/img.jpg");
-            //Log.e("DIRECTORIO", file);
-            //jpgView.setImageBitmap(bitmap);
-            //Log.e("EXTRA: ",data.getExtras().get("data").toString());
-            //Bitmap theImage = (Bitmap) data.getExtras().get("data");
-            //jpgView .setImageBitmap(theImage);
-
-            //Obtener id receta
-            RecetaModel receta = helpher.getTodasRecetas().get(helpher.getTodasRecetas().size()-1);
-            String urlFoto=receta.getUrlFoto();
-
-            //Mostrar imagen
-            ImageView jpgView = (ImageView)findViewById(R.id.image_receta);
-            Bitmap bitmap = BitmapFactory.decodeFile(urlFoto);
-            Log.e("DIRECTORIO", urlFoto);
-            jpgView.setImageBitmap(bitmap);
-
-
-
-        }
-    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

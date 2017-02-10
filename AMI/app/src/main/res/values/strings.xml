@@ -19,6 +19,7 @@
     <string name="title_dia">Medicamentos del día</string>
     <string name="title_activity_Menu">Menú</string>
     <string name="title_activity_Receta">Mis Recetas</string>
+    <string name="title_activity_CrearReceta">Nueva Receta</string>
 
 
     <string-array name="names_array">
