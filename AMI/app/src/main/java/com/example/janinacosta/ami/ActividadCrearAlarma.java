@@ -418,6 +418,8 @@ public class ActividadCrearAlarma extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         finish();
+        Intent i = new Intent(getApplicationContext(), NuevoMedicamentoActivity.class);
+        startActivity(i);
         return super.onOptionsItemSelected(item);
     }
 

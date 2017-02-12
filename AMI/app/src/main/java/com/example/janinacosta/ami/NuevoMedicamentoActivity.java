@@ -184,6 +184,8 @@ public class NuevoMedicamentoActivity extends AppCompatActivity implements Numbe
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         finish();
+        Intent i = new Intent(getApplicationContext(), MisMedicamentosActivity.class);
+        startActivity(i);
         return super.onOptionsItemSelected(item);
     }
 

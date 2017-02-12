@@ -97,7 +97,10 @@ public class ActividadRecetas extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         finish();
+        Intent i = new Intent(getApplicationContext(), MenuActividad.class);
+        startActivity(i);
         return super.onOptionsItemSelected(item);
     }
 }

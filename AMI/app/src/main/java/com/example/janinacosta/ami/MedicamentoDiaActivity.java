@@ -1,6 +1,7 @@
 package com.example.janinacosta.ami;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -53,6 +54,8 @@ public class MedicamentoDiaActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         finish();
+        Intent i = new Intent(getApplicationContext(), MenuActividad.class);
+        startActivity(i);
         return super.onOptionsItemSelected(item);
     }
 

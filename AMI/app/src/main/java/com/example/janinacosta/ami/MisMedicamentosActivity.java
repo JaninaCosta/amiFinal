@@ -110,7 +110,9 @@ public class MisMedicamentosActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        finish();finish();
+        finish();
+        Intent i = new Intent(getApplicationContext(), MenuActividad.class);
+        startActivity(i);
         return super.onOptionsItemSelected(item);
     }
 
