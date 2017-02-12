@@ -77,7 +77,7 @@ public class ActividadCrearAlarma extends AppCompatActivity {
         layout_horas = (LinearLayout) findViewById(R.id.layout_horas);
         layout_horas.setVisibility(View.GONE);
 
-       listaHoras= new ArrayList<AlarmaModel>();
+       //listaHoras= new ArrayList<AlarmaModel>();
 
         //recycler
         mRecyclerView = (RecyclerView) findViewById(R.id.recycleviewhora);
@@ -274,6 +274,8 @@ public class ActividadCrearAlarma extends AppCompatActivity {
                 //Calcular las horaas
                 frecuencia_horas = Integer.valueOf(editText_frecuencia.getText().toString());
                 String horas= "";
+
+                listaHoras= new ArrayList<AlarmaModel>();
 
                 for(int i=hora; i<=24;i=(i+frecuencia_horas)){
                     horas = horas + ", "+i+":"+minutos;
