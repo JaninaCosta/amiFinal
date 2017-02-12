@@ -1,8 +1,10 @@
 package com.example.janinacosta.ami;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,6 +69,19 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecetaAdapter.HolderRece
             btnVerReceta = (Button) itemView.findViewById(R.id.btnVerReceta);
             img_receta = (ImageView)itemView.findViewById(R.id.img_receta);
             itemView.setOnClickListener(this);
+
+            btnVerReceta.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context,ActividadRecetas.class);
+
+                    Bundle extras = new Bundle();
+                    extras.putInt("position",getAdapterPosition());
+                    intent.putExtras(extras);
+                    context.startActivity(intent);
+                }
+            });
+
         }
 
         @Override
@@ -79,5 +94,6 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecetaAdapter.HolderRece
             context.startActivity(intent);
             */
         }
+
     }
 }

@@ -47,6 +47,7 @@ public class ActividadRecetas extends AppCompatActivity {
 
     ArrayList<RecetaModel> listaRecetas;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,9 +88,10 @@ public class ActividadRecetas extends AppCompatActivity {
 
                 Intent i = new Intent(act, ActividadCrearReceta.class);
                 act.startActivityForResult(i, mAdapter.getItemCount(), op.toBundle());
-                finish();
+
             }
         });
+
     }
 
 

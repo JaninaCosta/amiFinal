@@ -186,7 +186,7 @@ public class DetailsActivity extends AppCompatActivity {
         });
 
 
-       // helpher
+        // helpher
         helpher = new DatabaseHelpher(this);
         dbList= new ArrayList<MedicamentoModel>();
         dbList = helpher.getDataFromDB();
