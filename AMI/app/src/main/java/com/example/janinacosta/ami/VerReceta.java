@@ -49,7 +49,14 @@ public class VerReceta extends AppCompatActivity {
             intent_foto.setAction(Intent.ACTION_VIEW);
             Uri imgUri = Uri.parse("file://"+urlFoto);
             intent_foto.setDataAndType(imgUri, "image/*");
-            startActivity(intent_foto);
+            startActivityForResult(intent_foto,0);
+
+        }
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 0) {
             //Recetas
             Intent intent_recetas = new Intent (getApplicationContext(),ActividadRecetas.class );
             startActivity(intent_recetas);

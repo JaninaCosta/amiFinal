@@ -73,7 +73,7 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecetaAdapter.HolderRece
             btnVerReceta.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context,ActividadRecetas.class);
+                    Intent intent = new Intent(context,VerReceta.class);
 
                     Bundle extras = new Bundle();
                     extras.putInt("position",getAdapterPosition());
