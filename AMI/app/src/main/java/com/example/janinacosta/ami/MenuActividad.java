@@ -39,8 +39,8 @@ public class MenuActividad extends AppCompatActivity {
 
         items.add(new MenuOpciones(R.drawable.ic_medicamentos_dia, "#082D5C"));
         items.add(new MenuOpciones(R.drawable.ic_mis_medicamentos, "#058687"));
-        items.add(new MenuOpciones(R.drawable.ic_historial, "#FCB13D"));
-        items.add(new MenuOpciones(R.drawable.ic_salir, "#FCB13D"));
+        items.add(new MenuOpciones(R.drawable.receta, "#FCB13D"));
+        //items.add(new MenuOpciones(R.drawable.ic_salir, "#FCB13D"));
         // Obtener el Recycler
         recycler = (RecyclerView) findViewById(R.id.reciclador);
         recycler.setHasFixedSize(true);
@@ -53,30 +53,7 @@ public class MenuActividad extends AppCompatActivity {
         adapter = new MenuAdapter(items);
         recycler.setAdapter(adapter);
 
-       /*
-        //Mio
-        int item=recycler.getAdapter().getItemCount();
-        Log.e("no sale", "item: " + item);
-        //action
-        recycler.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ActividadLogin.class);
-                startActivity(i);
-            }
-        }); */
-
-        /*
-
-
-        botonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MenuActividad.class);
-                startActivity(i);
-            }
-        });*/
     }
 
 
