@@ -21,7 +21,9 @@
             android:layout_height="wrap_content"
             android:hint="Nombre del Medicamento"
             android:textSize="23sp"
-            android:fontFamily="sans-serif" />
+            android:fontFamily="sans-serif"
+            android:inputType="textCapWords"
+            android:maxLength="20"/>
     </android.support.design.widget.TextInputLayout>
 
     <ImageView
@@ -99,6 +101,7 @@
             android:hint="Dosis diaria"
             android:inputType="number"
             android:textSize="23sp"
+            android:maxLength="2"
             android:fontFamily="sans-serif" />
     </android.support.design.widget.TextInputLayout>
 
@@ -136,6 +139,7 @@
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:ems="5"
+            android:maxLength="30"
             android:hint="Indicaciones Médicas"
             android:textSize="23sp" />
     </android.support.design.widget.TextInputLayout>

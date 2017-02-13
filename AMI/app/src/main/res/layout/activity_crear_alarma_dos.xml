@@ -51,6 +51,7 @@
             android:contextClickable="false"
             android:inputType="number"
             android:hint="Frecuencia"
+            android:maxLength="2"
             android:textSize="23sp" />
     </android.support.design.widget.TextInputLayout>
 
