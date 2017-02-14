@@ -33,7 +33,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre de la Receta"
-            android:textSize="23sp"
+            android:textSize="21sp"
+            android:maxLength="15"
+
             android:fontFamily="sans-serif" />
     </android.support.design.widget.TextInputLayout>
     <ImageView

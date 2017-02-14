@@ -23,18 +23,6 @@ public class MenuActividad extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_recycle);
-        /*Button botonCerrarSesion = (Button)findViewById(R.id.idCerrarSesion);
-         botonCerrarSesion.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(getApplicationContext(), ActividadLogin.class );
-                    startActivity(i);
-                }
-            });
-
-        }
-         */
-
         List<MenuOpciones> items = new ArrayList<>();
 
         items.add(new MenuOpciones(R.drawable.ic_medicamentos_dia, "#082D5C"));
