@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -38,6 +40,12 @@ public class Alarma extends AppCompatActivity {
         medicamento = (TextView) findViewById(R.id.textViewMedi);
         dosis =(TextView) findViewById(R.id.textViewDosis);
         indicacion= (TextView) findViewById(R.id.textViewDescrip);
+
+        //Toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_btn_atras_fondo);
+        setSupportActionBar(toolbar);
+        //
 
         //Obteniendo valores del último medicamento
         helpher = new DatabaseHelpher(this);
@@ -119,5 +127,14 @@ public class Alarma extends AppCompatActivity {
 
     private void set_alarm_text(String output) {
         updateText.setText(output);
+    }
+
+    //Botón atrás
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        Intent i = new Intent(getApplicationContext(), MisMedicamentosActivity.class);
+        startActivity(i);
+        return super.onOptionsItemSelected(item);
     }
 }

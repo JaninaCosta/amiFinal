@@ -417,6 +417,7 @@ public class ActividadCrearAlarma extends AppCompatActivity {
         return true;
     }
 
+    //Botón atrás
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         finish();

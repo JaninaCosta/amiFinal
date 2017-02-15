@@ -1,82 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
     tools:context="com.example.janinacosta.ami.Alarma">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/update_text"
-        android:layout_below="@+id/alarm_off"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="-30dp"
-        android:text="Alarma sonando!" />
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <TextView
-        android:text="Paracetamol"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewMedi"
-        android:textSize="50sp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="38dp"
-        android:textStyle="normal|bold"
-        android:gravity="center"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    </android.support.design.widget.AppBarLayout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="30dp"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context="com.example.janinacosta.ami.Alarma">
 
-    <TextView
-        android:text="2 Dosis"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewMedi"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:id="@+id/textViewDosis"
-        android:textSize="30sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/update_text"
+            android:layout_below="@+id/alarm_off"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-30dp"
+            android:text="Alarma sonando!" />
 
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="75dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Apagar Alarma"
-        android:id="@+id/alarm_off"
-        android:textSize="23sp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:backgroundTint="@color/colorAccent"
-        android:textColor="@android:color/white"/>
+        <TextView
+            android:text="Paracetamol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewMedi"
+            android:textSize="50sp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="40dp"
+            android:textStyle="normal|bold"
+            android:gravity="center"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true" />
 
-    <TextView
-        android:text="Para el dolor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewDescrip"
-        android:textSize="40sp"
-        android:layout_below="@+id/textViewDosis"
-        android:layout_alignParentEnd="true"
-        android:textAlignment="center"
-        android:layout_alignParentStart="true"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"/>
+        <TextView
+            android:text="2 Dosis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewMedi"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:id="@+id/textViewDosis"
+            android:textSize="30sp" />
 
-    <TextClock
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textClock"
-        android:textSize="60sp"
-        android:textColor="@color/colorAccent"
-        android:layout_below="@+id/textViewDescrip"
-        android:layout_marginTop="27dp"
-        android:layout_alignEnd="@+id/textViewDescrip"
-        android:layout_alignParentStart="true"
-        android:gravity="center"/>
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="75dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Apagar Alarma"
+            android:id="@+id/alarm_off"
+            android:textSize="23sp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@android:color/white"/>
 
-</RelativeLayout>
+        <TextView
+            android:text="Para el dolor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewDescrip"
+            android:textSize="40sp"
+            android:layout_below="@+id/textViewDosis"
+            android:layout_alignParentEnd="true"
+            android:textAlignment="center"
+            android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_marginTop="10dp"/>
 
+        <TextClock
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textClock"
+            android:textSize="60sp"
+            android:textColor="@color/colorAccent"
+            android:layout_below="@+id/textViewDescrip"
+            android:layout_marginTop="12dp"
+            android:layout_alignEnd="@+id/textViewDescrip"
+            android:layout_alignParentStart="true"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

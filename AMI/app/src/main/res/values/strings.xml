@@ -21,6 +21,7 @@
     <string name="title_activity_Receta">Mis Recetas</string>
     <string name="title_activity_CrearReceta">Nueva Receta</string>
     <string name="title_activity_VerReceta">Detalle Receta</string>
+    <string name="title_activity_apagar_alarma">Alarma</string>
 
 
     <string-array name="names_array">

@@ -30,7 +30,9 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".Alarma" />
+        <activity android:name=".Alarma"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/title_activity_apagar_alarma"/>
 
         <receiver android:name=".Alarm_Receiver" />
 

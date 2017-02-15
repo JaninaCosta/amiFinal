@@ -22,7 +22,7 @@
             android:textSize="23sp"
             android:fontFamily="sans-serif"
             android:inputType="textCapWords"
-            android:maxLength="12"/>
+            android:maxLength="20"/>
     </android.support.design.widget.TextInputLayout>
 
     <ImageView
