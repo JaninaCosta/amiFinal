@@ -118,9 +118,12 @@ public class Alarma extends AppCompatActivity {
                 //tells the clock
                 my_intent.putExtra("extra", "alarm off");
 
-
                 // stop the ringtone
                 sendBroadcast(my_intent);
+
+                Intent i = new Intent(getApplicationContext(), MisMedicamentosActivity.class);
+                startActivity(i);
+
             }
         });
     }
