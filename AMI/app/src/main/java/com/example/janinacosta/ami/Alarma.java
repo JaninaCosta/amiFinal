@@ -39,7 +39,18 @@ public class Alarma extends AppCompatActivity {
         dosis =(TextView) findViewById(R.id.textViewDosis);
         indicacion= (TextView) findViewById(R.id.textViewDescrip);
 
-        
+        //Obteniendo valores del último medicamento
+        helpher = new DatabaseHelpher(this);
+        dbList = new ArrayList<MedicamentoModel>();
+        dbList = helpher.getDataFromDB();
+
+        MedicamentoModel m = dbList.get(dbList.size()-1);
+
+        medicamento.setText(m.getName());
+        dosis.setText(""+m.getDosis()+ " Dosis");
+        indicacion.setText(m.getIndicaciones());
+
+        /// FIN de obtener último medicamento
 
         /*
         alarmManager=(AlarmManager) getSystemService(ALARM_SERVICE);
