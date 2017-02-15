@@ -425,4 +425,7 @@ public class ActividadCrearAlarma extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public Context getContext() {
+        return context;
+    }
 }

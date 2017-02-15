@@ -13,14 +13,19 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class Alarma extends AppCompatActivity {
     AlarmManager alarmManager;
     private TimePicker alarmTimePicker;
-    private TextView updateText;
+    private TextView updateText,medicamento, dosis, indicacion;
     Context context;
     PendingIntent pending_intent;
+
+    DatabaseHelpher helpher;
+    List<MedicamentoModel> dbList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,12 @@ public class Alarma extends AppCompatActivity {
         this.context=this;
         final Intent my_intent = new Intent(this.context, Alarm_Receiver.class);
         updateText = (TextView) findViewById(R.id.update_text);
+        medicamento = (TextView) findViewById(R.id.textViewMedi);
+        dosis =(TextView) findViewById(R.id.textViewDosis);
+        indicacion= (TextView) findViewById(R.id.textViewDescrip);
+
+        
+
         /*
         alarmManager=(AlarmManager) getSystemService(ALARM_SERVICE);
         alarmTimePicker=(TimePicker) findViewById(R.id.timePicker);
@@ -82,7 +93,7 @@ public class Alarma extends AppCompatActivity {
             public void onClick(View v) {
                 set_alarm_text("La Alarma fue apagada!");
 
-                alarmManager.cancel(pending_intent);
+                //alarmManager.cancel(pending_intent);
 
                 // put extra string into my intent
                 //tells the clock
